@@ -4,9 +4,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import styles from './styles/Home.module.css';
 import 'swiper/css';
+import usePopularMovies from '@/shared/hooks/usePopularMovies';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
+  const popularMovies = usePopularMovies();
 
   return (
     <section className={styles.homePage}>
@@ -19,10 +21,10 @@ const Home = () => {
               spaceBetween={20}
               slidesPerView={'auto'}
               loop={true}
-              // autoplay={{
-              //   delay: 3000,
-              //   disableOnInteraction: false,
-              // }}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
               breakpoints={{
                 640: { slidesPerView: 1 },
                 768: { slidesPerView: 2 },
@@ -37,6 +39,7 @@ const Home = () => {
                     rating={element.vote_average}
                     poster={element.poster_path}
                     genere={element.genre_ids}
+                    id={element.id}
                   />
                 </SwiperSlide>
               ))}
@@ -44,6 +47,42 @@ const Home = () => {
           ) : (
             <p>Нет трендов на этой неделе</p>
           )}
+        </div>
+      </div>
+      <div className={styles.moviesList}>
+        <h3 className={styles.sectionTitle}>Популярные фильмы</h3>
+        <div className={styles.popularMoviesWrapper}>
+          {popularMovies.length > 0 ? (
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={20}
+              slidesPerView={'auto'}
+              loop={true}
+              speed={1000}
+              autoplay={{
+                delay: 0,
+                disableOnInteraction: false,
+              }}
+              breakpoints={{
+                600: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 4 },
+              }}
+            >
+              {popularMovies.map((element) => (
+                <SwiperSlide key={element.id}>
+                  <Banner
+                    mediaType={'movie'}
+                    title={element.title || element.name}
+                    rating={element.vote_average}
+                    poster={element.backdrop_path}
+                    genere={element.genre_ids}
+                    id={element.id}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : null}
         </div>
       </div>
     </section>
