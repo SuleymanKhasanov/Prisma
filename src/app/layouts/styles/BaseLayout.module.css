@@ -8,6 +8,7 @@ body {
   font-family: 'Roboto', system-ui;
   color: #c3c3c3;
   background-color: #2a2a2a;
+  overflow-x: hidden;
 }
 
 ul {
@@ -21,4 +22,5 @@ a {
 .content {
   margin: 0 10px 0 80px;
   width: 95%;
+  overflow-x: hidden;
 }

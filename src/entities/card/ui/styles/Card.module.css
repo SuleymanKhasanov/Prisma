@@ -1,0 +1,32 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  gap: 10px;
+  flex-grow: 1;
+  min-width: 300px;
+  flex-shrink: 0;
+}
+.cardImg {
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  white-space: wrap;
+}
+
+.title {
+  font-size: 20px;
+  color: #c3c3c3;
+}
+
+.description {
+  font-size: 14px;
+  color: #777777;
+}
