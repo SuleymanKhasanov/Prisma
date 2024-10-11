@@ -1,8 +1,8 @@
 import { moviesGeners } from '@/shared/assets/genresId';
 import { seriesGenere } from '@/shared/assets/genresId';
-import styles from './styles/Banner.module.css';
+import styles from './styles/Card.module.css';
 
-const Banner = ({ title, poster, mediaType, genere }) => {
+const Card = ({ mediaType, title, poster, genere }) => {
   const genres =
     mediaType === 'movie' ? moviesGeners.genres : seriesGenere.genres;
 
@@ -12,13 +12,13 @@ const Banner = ({ title, poster, mediaType, genere }) => {
   });
 
   return (
-    <div className={styles.banner}>
+    <div className={styles.card}>
       <img
         src={poster}
         alt={`poster by ${title}`}
-        className={styles.banerImg}
+        className={styles.cardImg}
       />
-      <div className={styles.bannerInfo}>
+      <div className={styles.cardInfo}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{genreNames.join(', ')}</p>
       </div>
@@ -26,4 +26,4 @@ const Banner = ({ title, poster, mediaType, genere }) => {
   );
 };
 
-export default Banner;
+export default Card;

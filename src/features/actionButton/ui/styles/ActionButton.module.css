@@ -1,0 +1,16 @@
+.actionButton {
+  background-color: rgba(83, 83, 83, 0.9);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 5px 15px;
+}
+
+.dott {
+  width: 4px;
+  height: 4px;
+  background-color: #d6d6d6;
+  border-radius: 50%;
+  display: block;
+  margin: 5px;
+}
