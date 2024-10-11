@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import styles from './styles/Sidebar.module.css';
-import logo from './icons/logo.svg';
-import menu from './icons/menu.svg';
-import close from './icons/close.svg';
-import movies from './icons/movies.svg';
-import series from './icons/series.svg';
-import watchLater from './icons/history.svg';
-import cartoon from './icons/cartoon.svg';
-import anime from './icons/anime.svg';
-import folder from './icons/folder.svg';
+import logo from '@/shared/icons/logo.svg';
+import menu from '@/shared/icons/menu.svg';
+import search from '@/shared/icons/search.svg';
+import close from '@/shared/icons/close.svg';
+import movies from '@/shared/icons/movies.svg';
+import series from '@/shared/icons/series.svg';
+import watchLater from '@/shared/icons/history.svg';
+import cartoon from '@/shared/icons/cartoon.svg';
+import anime from '@/shared/icons/anime.svg';
+import folder from '@/shared/icons/folder.svg';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -43,6 +44,14 @@ const Sidebar = () => {
               className={styles.sidebarIcon}
             />
             <span className={styles.sidebarItemText}>Меню</span>
+          </li>
+          <li className={styles.sidebarItem}>
+            <img
+              src={search}
+              alt="menu"
+              className={styles.sidebarIcon}
+            />
+            <span className={styles.sidebarItemText}>Поиск</span>
           </li>
           <li className={styles.sidebarItem}>
             <img

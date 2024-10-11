@@ -1,8 +1,8 @@
 import styles from './styles/ActionButton.module.css';
 
-const ActionButton = () => {
+const ActionButton = ({ onClick }) => {
   return (
-    <div className={styles.actionButton}>
+    <div className={styles.actionButton} onClick={onClick}>
       <span className={styles.dott}></span>
       <span className={styles.dott}></span>
       <span className={styles.dott}></span>

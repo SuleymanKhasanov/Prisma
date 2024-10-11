@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { Card } from '@/entities/card';
 import { Raiting } from '@/entities/raiting';
-import { ActionButton } from '@/features/actionButton';
+import { ActionButton, ActionItem } from '@/features/action';
 import styles from './styles/Banner.module.css';
 
 const Banner = ({
@@ -10,7 +11,17 @@ const Banner = ({
   poster,
   genere,
   name,
+  id,
 }) => {
+  const [modalActionItem, setModalActionItem] = useState({});
+
+  const handleShowModalAction = (id) => {
+    setModalActionItem((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
   return (
     <div className={styles.banner}>
       <div className={styles.bannerItem}>
@@ -23,7 +34,11 @@ const Banner = ({
       </div>
       <div className={styles.bannerAction}>
         <Raiting rating={rating} />
-        <ActionButton />
+        <ActionButton
+          onClick={() => handleShowModalAction(id)}
+          id={id}
+        />
+        {modalActionItem[id] ? <ActionItem /> : null}
       </div>
     </div>
   );
