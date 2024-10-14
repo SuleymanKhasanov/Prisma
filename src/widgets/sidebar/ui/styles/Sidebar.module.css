@@ -10,12 +10,12 @@
 }
 
 .sidebarNavigation {
-  margin: 30px auto;
+  margin: 20px auto;
   padding: 5px;
   height: 100vh;
-  overflow-y: scroll;
   padding-bottom: 30px;
   scrollbar-width: none;
+  position: relative;
 }
 
 .sidebarNavigation::-webkit-scrollbar {
@@ -25,15 +25,11 @@
 .sidebarList {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
+  height: 100vh;
 }
 
 .sidebarItem {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  cursor: pointer;
-  padding: 15px;
   transition: all 0.2s ease;
 }
 
@@ -45,4 +41,16 @@
 .sidebarItemText {
   font-weight: bold;
   white-space: nowrap;
+}
+
+.routerLink {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  padding: 15px;
+  transition: all 0.2s ease;
+  color: inherit;
+  width: 100%;
+  border-radius: 5px;
 }

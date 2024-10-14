@@ -20,7 +20,13 @@ a {
 }
 
 .content {
-  margin: 0 10px 0 80px;
-  width: 95%;
+  margin: 0 10px 0 75px;
+  width: 80%;
   overflow-x: hidden;
+}
+
+@media screen and (min-width: 992px) {
+  .content {
+    width: 100%;
+  }
 }
