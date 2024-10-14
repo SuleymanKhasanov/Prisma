@@ -68,7 +68,7 @@ const Home = () => {
                 disableOnInteraction: false,
               }}
               breakpoints={{
-                600: { slidesPerView: 1 },
+                640: { slidesPerView: 1 },
                 768: { slidesPerView: 2 },
                 1024: { slidesPerView: 4 },
               }}
@@ -104,7 +104,7 @@ const Home = () => {
                 disableOnInteraction: false,
               }}
               breakpoints={{
-                600: { slidesPerView: 1 },
+                640: { slidesPerView: 1 },
                 768: { slidesPerView: 2 },
                 1024: { slidesPerView: 4 },
               }}

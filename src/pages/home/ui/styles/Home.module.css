@@ -16,13 +16,13 @@
 
 .moviesList {
   margin-top: 20px;
+  width: 100%;
 }
 .sectionTitle {
   font-size: 25px;
 }
 
 .popularMoviesWrapper {
-  width: 370px;
   padding-bottom: 10px;
   overflow: hidden;
   margin-top: 20px;
