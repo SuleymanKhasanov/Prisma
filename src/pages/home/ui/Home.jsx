@@ -7,11 +7,13 @@ import { Autoplay } from 'swiper/modules';
 
 import styles from './styles/Home.module.css';
 import 'swiper/css';
+import useTopRatedMovies from '@/shared/hooks/useTopRatedMovies';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
   const popularMovies = usePopularMovies();
   const popularShows = usePopularShows();
+  const topRatedMovies = useTopRatedMovies();
 
   return (
     <section className={styles.homePage}>
@@ -123,6 +125,45 @@ const Home = () => {
               ))}
             </Swiper>
           ) : null}
+        </div>
+      </div>
+
+      <div className={styles.weekTrends}>
+        <h2 className={styles.sectionTitle}>Фильмы топ рейтинга</h2>
+        <div className={styles.weekTrendsWrapper}>
+          {topRatedMovies.length > 0 ? (
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={20}
+              slidesPerView={'auto'}
+              loop={true}
+              speed={1000}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+              }}
+              breakpoints={{
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 4 },
+              }}
+            >
+              {topRatedMovies.map((element, index) => (
+                <SwiperSlide key={element.id || index}>
+                  <Banner
+                    mediaType={'movie'}
+                    title={element.title || element.name}
+                    rating={element.vote_average}
+                    poster={element.poster_path}
+                    genere={element.genre_ids}
+                    id={element.id}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            <p>Нет трендов на этой неделе</p>
+          )}
         </div>
       </div>
     </section>

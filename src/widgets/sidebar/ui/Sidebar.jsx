@@ -52,7 +52,9 @@ const Sidebar = () => {
           <li className={styles.sidebarItem}>
             <NavLink
               to="/search"
-              activeStyle={{ background: '#093205' }}
+              style={({ isActive }) => ({
+                background: isActive ? '#093205' : 'inherit',
+              })}
               className={styles.routerLink}
             >
               <img
@@ -67,7 +69,9 @@ const Sidebar = () => {
           <li className={styles.sidebarItem}>
             <NavLink
               to="/movies"
-              activeStyle={{ background: '#093205' }}
+              style={({ isActive }) => ({
+                background: isActive ? '#093205' : 'inherit',
+              })}
               className={styles.routerLink}
             >
               <img
@@ -82,7 +86,9 @@ const Sidebar = () => {
           <li className={styles.sidebarItem}>
             <NavLink
               to="/series"
-              activeStyle={{ background: '#093205' }}
+              style={({ isActive }) => ({
+                background: isActive ? '#093205' : 'inherit',
+              })}
               className={styles.routerLink}
             >
               <img
@@ -97,7 +103,9 @@ const Sidebar = () => {
           <li className={styles.sidebarItem}>
             <NavLink
               to="/cartoons"
-              activeStyle={{ background: '#093205' }}
+              style={({ isActive }) => ({
+                background: isActive ? '#093205' : 'inherit',
+              })}
               className={styles.routerLink}
             >
               <img
@@ -114,7 +122,9 @@ const Sidebar = () => {
           <li className={styles.sidebarItem}>
             <NavLink
               to="/anime"
-              activeStyle={{ background: '#093205' }}
+              style={({ isActive }) => ({
+                background: isActive ? '#093205' : 'inherit',
+              })}
               className={styles.routerLink}
             >
               <img
@@ -129,7 +139,9 @@ const Sidebar = () => {
           <li className={styles.sidebarItem}>
             <NavLink
               to="/watch-later"
-              activeStyle={{ background: '#093205' }}
+              style={({ isActive }) => ({
+                background: isActive ? '#093205' : 'inherit',
+              })}
               className={styles.routerLink}
             >
               <img
@@ -145,8 +157,10 @@ const Sidebar = () => {
 
           <li className={styles.sidebarItem}>
             <NavLink
-              to="/folder"
-              activeStyle={{ background: '#093205' }}
+              to="/collections"
+              style={({ isActive }) => ({
+                background: isActive ? '#093205' : 'inherit',
+              })}
               className={styles.routerLink}
             >
               <img
