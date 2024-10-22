@@ -6,18 +6,41 @@ import usePopularShows from '@/shared/hooks/usePopulerTvShows';
 import useTopRatedMovies from '@/shared/hooks/useTopRatedMovies';
 
 import styles from './styles/Home.module.css';
+import useStories from '@/shared/hooks/useStories';
+import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
+import StoriesBanner from '@/features/storiesBanner/ui/storiesBanner';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
   const popularMovies = usePopularMovies();
   const popularShows = usePopularShows();
   const topRatedMovies = useTopRatedMovies();
+  const stories = useStories();
+
+  console.log(stories.movieTrailers);
 
   return (
     <section className={styles.homePage}>
+      <div className={styles.stories}>
+        {stories.movieTrailers.length > 0 &&
+          stories.movieTrailers.map((element, index) => {
+            const movie = stories.popularMovies.find(
+              (e) => e.id === element.movieId,
+            );
+            return movie ? (
+              <StoriesBanner
+                key={`${movie.id}-${index}`}
+                image={movie.backdrop_path}
+                title={movie.title}
+                id={movie.id}
+                movieId={element.movieId}
+              />
+            ) : null;
+          })}
+      </div>
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Тренды недели</h2>
-        <div className={styles.weekTrendsWrapper}>
+        <div className={styles.wrapper}>
           {weekTrends.length > 0 ? (
             <Slider moviesAndShows={weekTrends}>
               {(element) => (
@@ -33,13 +56,13 @@ const Home = () => {
               )}
             </Slider>
           ) : (
-            <p>Нет трендов на этой неделе</p>
+            <BannerSkeleton count={4} size={'big'} />
           )}
         </div>
       </div>
       <div className={styles.moviesList}>
         <h3 className={styles.sectionTitle}>Популярные фильмы</h3>
-        <div className={styles.popularMoviesWrapper}>
+        <div className={styles.wrapper}>
           {popularMovies.length > 0 ? (
             <Slider moviesAndShows={popularMovies}>
               {(element) => (
@@ -55,13 +78,13 @@ const Home = () => {
               )}
             </Slider>
           ) : (
-            <p>Нет списка популятных фильмов</p>
+            <BannerSkeleton count={4} size={'small'} />
           )}
         </div>
       </div>
       <div className={styles.moviesList}>
         <h3 className={styles.sectionTitle}>Популярные ТВ-шоу</h3>
-        <div className={styles.popularMoviesWrapper}>
+        <div className={styles.wrapper}>
           {popularShows.length > 0 ? (
             <Slider moviesAndShows={popularShows}>
               {(element) => (
@@ -77,14 +100,14 @@ const Home = () => {
               )}
             </Slider>
           ) : (
-            <p>Нет списка популятных ТВ-шоу</p>
+            <BannerSkeleton count={4} size={'small'} />
           )}
         </div>
       </div>
 
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Фильмы топ рейтинга</h2>
-        <div className={styles.weekTrendsWrapper}>
+        <div className={styles.wrapper}>
           {topRatedMovies.length > 0 ? (
             <Slider moviesAndShows={topRatedMovies}>
               {(element) => (
@@ -100,7 +123,7 @@ const Home = () => {
               )}
             </Slider>
           ) : (
-            <p>Нет фильмов топ рейтинга</p>
+            <BannerSkeleton count={4} size={'big'} />
           )}
         </div>
       </div>

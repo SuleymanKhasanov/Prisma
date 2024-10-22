@@ -6,4 +6,7 @@ const sidebarItemsData = [
     title: 'Prisma',
     icon: logo,
   },
+  {
+    to: '',
+  },
 ];
