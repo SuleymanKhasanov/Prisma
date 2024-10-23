@@ -4,11 +4,13 @@ import useWeekTrending from '@/shared/hooks/useWeekTrends';
 import usePopularMovies from '@/shared/hooks/usePopularMovies';
 import usePopularShows from '@/shared/hooks/usePopulerTvShows';
 import useTopRatedMovies from '@/shared/hooks/useTopRatedMovies';
-
-import styles from './styles/Home.module.css';
 import useStories from '@/shared/hooks/useStories';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import StoriesBanner from '@/features/storiesBanner/ui/storiesBanner';
+
+import 'swiper/css';
+
+import styles from './styles/Home.module.css';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
@@ -17,10 +19,9 @@ const Home = () => {
   const topRatedMovies = useTopRatedMovies();
   const stories = useStories();
 
-  console.log(stories.movieTrailers);
-
   return (
     <section className={styles.homePage}>
+      {/* Stories Banner */}
       <div className={styles.stories}>
         {stories.movieTrailers.length > 0 &&
           stories.movieTrailers.map((element, index) => {
@@ -38,6 +39,8 @@ const Home = () => {
             ) : null;
           })}
       </div>
+
+      {/* Week Trends */}
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Тренды недели</h2>
         <div className={styles.wrapper}>
@@ -60,6 +63,8 @@ const Home = () => {
           )}
         </div>
       </div>
+
+      {/* Popular Movies */}
       <div className={styles.moviesList}>
         <h3 className={styles.sectionTitle}>Популярные фильмы</h3>
         <div className={styles.wrapper}>
@@ -82,6 +87,8 @@ const Home = () => {
           )}
         </div>
       </div>
+
+      {/* Popular TV Shows */}
       <div className={styles.moviesList}>
         <h3 className={styles.sectionTitle}>Популярные ТВ-шоу</h3>
         <div className={styles.wrapper}>
@@ -105,6 +112,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Top Rated Movies */}
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Фильмы топ рейтинга</h2>
         <div className={styles.wrapper}>

@@ -8,22 +8,24 @@
 .weekTrends {
   display: flex;
   flex-direction: column;
-  margin: 15px;
+  gap: 15px; /* Оставляем gap как в HEAD */
+  margin: 15px; /* Устанавливаем margin как в main */
   height: 100%;
   width: 100%;
 }
 
 .wrapper {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* Сохраняем gap как в main */
   overflow: hidden;
-  margin-top: 10px;
+  margin-top: 10px; /* Используем margin-top из main */
 }
 
 .moviesList {
   margin-top: 20px;
   width: 100%;
 }
+
 .sectionTitle {
   font-size: 25px;
 }
