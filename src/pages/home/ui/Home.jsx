@@ -6,11 +6,11 @@ import usePopularShows from '@/shared/hooks/usePopulerTvShows';
 import useTopRatedMovies from '@/shared/hooks/useTopRatedMovies';
 import useStories from '@/shared/hooks/useStories';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
-import StoriesBanner from '@/features/storiesBanner/ui/storiesBanner';
-
+import { StoriesBanner } from '@/features/stories';
 import 'swiper/css';
 
 import styles from './styles/Home.module.css';
+import StoriesModalWindow from '@/features/stories/storiesModalWindow/ui/StoriesModalWindow';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
@@ -28,18 +28,20 @@ const Home = () => {
             const movie = stories.popularMovies.find(
               (e) => e.id === element.movieId,
             );
+            const movieKey = element.trailer?.[0]?.key;
             return movie ? (
               <StoriesBanner
                 key={`${movie.id}-${index}`}
                 image={movie.backdrop_path}
                 title={movie.title}
                 id={movie.id}
-                movieId={element.movieId}
+                movieKey={movieKey}
               />
             ) : null;
           })}
       </div>
 
+      <StoriesModalWindow />
       {/* Week Trends */}
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Тренды недели</h2>
