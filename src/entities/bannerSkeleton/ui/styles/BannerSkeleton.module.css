@@ -1,0 +1,45 @@
+.skeleton {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  flex-direction: column;
+  position: relative;
+}
+
+.bigBanner {
+  min-width: 300px;
+  padding: 20px;
+  height: 500px;
+  background: linear-gradient(90deg, #2a2a2a, #3a3a3a, #2a2a2a);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  border-radius: 5px;
+}
+
+.smallBanner {
+  min-width: 300px;
+  padding: 20px;
+  height: 200px;
+  background: linear-gradient(90deg, #2a2a2a, #3a3a3a, #2a2a2a);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  border-radius: 5px;
+}
+
+.textSkeleton {
+  width: 60%;
+  padding: 10px;
+  background: linear-gradient(90deg, #2a2a2a, #3a3a3a, #2a2a2a);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  border-radius: 5px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}

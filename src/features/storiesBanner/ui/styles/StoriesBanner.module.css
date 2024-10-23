@@ -1,0 +1,35 @@
+.storiesBanner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  min-width: 50px;
+  max-width: 80px;
+  flex-shrink: 0;
+}
+
+.storiesImg {
+  border-radius: 30px;
+  position: 0 0;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  display: block;
+}
+
+.wrapper {
+  width: 75px;
+  height: 75px;
+  background: linear-gradient(
+    45deg,
+    #17a03d,
+    #33cc99,
+    #00bfff,
+    #0066ff
+  );
+  padding: 3px;
+  border-radius: 30px;
+}

@@ -8,24 +8,40 @@
 .weekTrends {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin: 20px;
+  gap: 15px; /* Оставляем gap как в HEAD */
+  margin: 15px; /* Устанавливаем margin как в main */
   height: 100%;
   width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px; /* Сохраняем gap как в main */
+  overflow: hidden;
+  margin-top: 10px; /* Используем margin-top из main */
 }
 
 .moviesList {
   margin-top: 20px;
   width: 100%;
 }
+
 .sectionTitle {
   font-size: 25px;
 }
 
-.popularMoviesWrapper {
-  padding-bottom: 10px;
-  overflow: hidden;
+.stories {
+  display: flex;
+  overflow-x: auto;
   margin-top: 20px;
+  gap: 20px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+.stories::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (min-width: 992px) {
