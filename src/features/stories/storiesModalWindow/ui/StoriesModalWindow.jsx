@@ -6,19 +6,21 @@ import close from '@/shared/icons/close.svg';
 const StoriesModalWindow = () => {
   const story = useSelector((state) => state.stories.currentStory);
 
-  const [hideFrame, setHideFrame] = useState(true);
-
-  console.log(story);
+  const [hideFrame, setHideFrame] = useState(false);
 
   useEffect(() => {
-    setHideFrame(true);
+    if (story) {
+      setHideFrame(true);
+    }
   }, [story]);
 
   return (
     <>
       <div
         className={
-          !hideFrame ? styles.modalWindowHide : styles.modalWindow
+          hideFrame === true
+            ? styles.modalWindow
+            : styles.modalWindowHide
         }
       >
         <button
