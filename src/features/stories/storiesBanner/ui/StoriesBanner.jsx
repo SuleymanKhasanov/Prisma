@@ -1,25 +1,28 @@
-import styles from './styles/StoriesBanner.module.css';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { showStories } from '../utils/slice';
+import styles from './styles/StoriesBanner.module.css';
 
 const StoriesBanner = ({ image, title, id, movieKey }) => {
   const dispatch = useDispatch();
+  const [selectedId, setSelectedId] = useState(null); // Состояние для хранения id выбранного элемента
 
-  const hanndlerToGetStories = (id, title, movieKey) => {
-    const storiesId = {
-      id,
-      movieKey,
-      title,
-    };
+  const handlerToGetStories = (id, title, movieKey) => {
+    const storiesId = { id, movieKey, title };
     dispatch(showStories(storiesId));
+    setSelectedId(id); // Обновляем id выбранного элемента
   };
 
   return (
     <div
       className={styles.storiesBanner}
-      onClick={() => hanndlerToGetStories(id, title, movieKey)}
+      onClick={() => handlerToGetStories(id, title, movieKey)}
     >
-      <div className={styles.wrapper}>
+      <div
+        className={
+          selectedId === id ? styles.wraperNotActive : styles.wrapper
+        }
+      >
         <img
           src={`https://image.tmdb.org/t/p/w500/${image}`}
           alt={title}

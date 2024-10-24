@@ -1,9 +1,14 @@
 .actionButton {
   background-color: rgba(0, 0, 0, 0.8);
   border: none;
-  border-radius: 8px;
+  border-radius: 50%;
   cursor: pointer;
   padding: 5px 15px;
+  transition: all 0.3s ease;
+}
+
+.actionButton:active {
+  transform: scale(0.5);
 }
 
 .dott {

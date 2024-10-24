@@ -33,3 +33,11 @@
   padding: 3px;
   border-radius: 30px;
 }
+
+.wraperNotActive {
+  width: 75px;
+  height: 75px;
+  background: linear-gradient(45deg, #717171, #5b5b5b);
+  padding: 3px;
+  border-radius: 30px;
+}

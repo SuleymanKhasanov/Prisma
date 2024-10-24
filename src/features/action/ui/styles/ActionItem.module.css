@@ -2,9 +2,10 @@
   position: absolute;
   top: 70px;
   right: 25px;
-  background-color: rgba(0, 0, 0, 0.9);
-  padding: 20px;
-  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 20px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -15,5 +16,11 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+
+.actionItem:hover {
+  background-color: rgba(79, 79, 79, 0.5);
 }

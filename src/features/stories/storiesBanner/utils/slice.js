@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const storiesSlice = createSlice({
   name: 'stories',
-  initialState: { currentStory: null }, // Инициализируем currentStory
+  initialState: { currentStory: null },
   reducers: {
     show: (state, action) => {
-      state.currentStory = action.payload; // Обновляем currentStory
+      state.currentStory = action.payload;
     },
     hide: (state) => {
       state.currentStory = null;
