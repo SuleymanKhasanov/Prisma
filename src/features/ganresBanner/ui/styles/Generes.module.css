@@ -1,0 +1,93 @@
+.ganeres {
+  padding: 40px 50px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  list-style: none;
+  border-radius: 15px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+.ganeres:hover {
+  transform: scale(1.1);
+}
+
+.action {
+  background: linear-gradient(45deg, #ff0000, #ff9900);
+}
+
+.adventure {
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+}
+
+.animation {
+  background: linear-gradient(45deg, #ffcc00, #ff66ff);
+}
+
+.comedy {
+  background: linear-gradient(45deg, #ff9900, #ffcc00);
+}
+
+.crime {
+  background: linear-gradient(45deg, #4b4b4b, #1e1e1e);
+}
+
+.documentary {
+  background: linear-gradient(45deg, #00b09b, #96c93d);
+}
+
+.drama {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+}
+
+.family {
+  background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
+}
+
+.fantasy {
+  background: linear-gradient(45deg, #c94b4b, #4b134f);
+}
+
+.history {
+  background: linear-gradient(45deg, #decba4, #3e5151);
+}
+
+.horror {
+  background: linear-gradient(45deg, #000000, #434343);
+}
+
+.music {
+  background: linear-gradient(45deg, #ff5f6d, #ffc371);
+}
+
+.mystery {
+  background: linear-gradient(45deg, #232526, #414345);
+}
+
+.romance {
+  background: linear-gradient(45deg, #ff9a9e, #fecfef);
+}
+
+.scifi {
+  background: linear-gradient(45deg, #00c9ff, #92fe9d);
+}
+
+.tvMovie {
+  background: linear-gradient(45deg, #f8ffae, #43c6ac);
+}
+
+.thriller {
+  background: linear-gradient(45deg, #000000, #e74c3c);
+}
+
+.war {
+  background: linear-gradient(45deg, #536976, #292e49);
+}
+
+.western {
+  background: linear-gradient(45deg, #d38312, #a83279);
+}
