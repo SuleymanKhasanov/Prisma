@@ -1,31 +1,35 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideStories } from '@/features/stories/storiesBanner/utils/slice'; // Импорт экшена для сброса состояния
 import styles from './styles/StoriesModalWindow.module.css';
 import { useEffect, useState } from 'react';
 import close from '@/shared/icons/close.svg';
 
 const StoriesModalWindow = () => {
+  const dispatch = useDispatch(); // Создаём dispatch
   const story = useSelector((state) => state.stories.currentStory);
 
-  const [hideFrame, setHideFrame] = useState(true);
-
-  console.log(story);
+  const [hideFrame, setHideFrame] = useState(false);
 
   useEffect(() => {
-    setHideFrame(true);
+    if (story) {
+      setHideFrame(true);
+    }
   }, [story]);
+
+  const handleClose = () => {
+    setHideFrame(false);
+    dispatch(hideStories()); // Сбрасываем Redux store
+  };
 
   return (
     <>
       <div
         className={
-          !hideFrame ? styles.modalWindowHide : styles.modalWindow
+          hideFrame ? styles.modalWindow : styles.modalWindowHide
         }
       >
-        <button
-          className={styles.buttonHide}
-          onClick={() => setHideFrame(false)}
-        >
-          <img src={close} alt="" />
+        <button className={styles.buttonHide} onClick={handleClose}>
+          <img src={close} alt="close button" />
         </button>
         {story && (
           <iframe
