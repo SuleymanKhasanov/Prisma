@@ -5,12 +5,12 @@ import styles from './styles/StoriesBanner.module.css';
 
 const StoriesBanner = ({ image, title, id, movieKey }) => {
   const dispatch = useDispatch();
-  const [selectedId, setSelectedId] = useState(null); // Состояние для хранения id выбранного элемента
+  const [selectedId, setSelectedId] = useState(null);
 
   const handlerToGetStories = (id, title, movieKey) => {
     const storiesId = { id, movieKey, title };
     dispatch(showStories(storiesId));
-    setSelectedId(id); // Обновляем id выбранного элемента
+    setSelectedId(id);
   };
 
   return (

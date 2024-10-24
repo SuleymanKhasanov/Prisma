@@ -44,6 +44,24 @@
   display: none;
 }
 
+.ganersList {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  overflow-x: auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  scroll-behavior: smooth;
+  padding-right: 80px;
+  padding-left: 10px;
+}
+
+.ganersList::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (min-width: 992px) {
   .popularMoviesWrapper {
     width: 1350px;

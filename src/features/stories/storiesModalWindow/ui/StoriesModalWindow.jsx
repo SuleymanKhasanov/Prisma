@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import close from '@/shared/icons/close.svg';
 
 const StoriesModalWindow = () => {
-  const dispatch = useDispatch(); // Создаём dispatch
+  const dispatch = useDispatch();
   const story = useSelector((state) => state.stories.currentStory);
 
   const [hideFrame, setHideFrame] = useState(false);
@@ -18,7 +18,7 @@ const StoriesModalWindow = () => {
 
   const handleClose = () => {
     setHideFrame(false);
-    dispatch(hideStories()); // Сбрасываем Redux store
+    dispatch(hideStories());
   };
 
   return (

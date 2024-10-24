@@ -11,6 +11,8 @@ import 'swiper/css';
 
 import styles from './styles/Home.module.css';
 import StoriesModalWindow from '@/features/stories/storiesModalWindow/ui/StoriesModalWindow';
+import { GaneresBanner } from '@/features/ganresBanner';
+import { moviesGeners } from '@/shared/assets/genresId';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
@@ -89,6 +91,18 @@ const Home = () => {
           )}
         </div>
       </div>
+
+      {/* GaneresList */}
+
+      <ul className={styles.ganersList}>
+        {moviesGeners.genres.map((element) => (
+          <GaneresBanner
+            title={element.name}
+            id={element.id}
+            key={element.id}
+          />
+        ))}
+      </ul>
 
       {/* Popular TV Shows */}
       <div className={styles.moviesList}>
