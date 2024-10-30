@@ -13,6 +13,7 @@ import styles from './styles/Home.module.css';
 import StoriesModalWindow from '@/features/stories/storiesModalWindow/ui/StoriesModalWindow';
 import { GaneresBanner } from '@/features/ganresBanner';
 import { moviesGeners } from '@/shared/assets/genresId';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
@@ -20,6 +21,7 @@ const Home = () => {
   const popularShows = usePopularShows();
   const topRatedMovies = useTopRatedMovies();
   const stories = useStories();
+  const autoplay = useSelector((state) => state.slider.autoplay);
 
   return (
     <section className={styles.homePage}>
@@ -49,7 +51,7 @@ const Home = () => {
         <h2 className={styles.sectionTitle}>Тренды недели</h2>
         <div className={styles.wrapper}>
           {weekTrends.length > 0 ? (
-            <Slider moviesAndShows={weekTrends}>
+            <Slider moviesAndShows={weekTrends} autoplay={autoplay}>
               {(element) => (
                 <Banner
                   key={element.id}
