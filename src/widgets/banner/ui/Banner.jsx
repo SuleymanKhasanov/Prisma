@@ -15,19 +15,24 @@ const Banner = ({
   genere,
   name,
   id,
+  sectionName,
 }) => {
   const [modalActionItem, setModalActionItem] = useState({});
   const autoplay = useSelector((state) => state.slider.autoplay);
   const dispatch = useDispatch();
 
-  const handleShowModalAction = (id) => {
+  const handleShowModalAction = (id, sectionName) => {
     setModalActionItem((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
 
     if (autoplay) {
-      dispatch(sliderStop());
+      dispatch(
+        sliderStop({
+          sectionName: sectionName,
+        }),
+      );
     } else {
       dispatch(
         sliderAutoplay({
@@ -51,7 +56,7 @@ const Banner = ({
       <div className={styles.bannerAction}>
         <Raiting rating={rating} />
         <ActionButton
-          onClick={() => handleShowModalAction(id)}
+          onClick={() => handleShowModalAction(id, sectionName)}
           id={id}
         />
         {modalActionItem[id] ? <ActionItem /> : null}

@@ -1,4 +1,3 @@
-// sliderSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const sliderSlice = createSlice({
@@ -6,15 +5,17 @@ const sliderSlice = createSlice({
   initialState: {
     autoplay: true,
     id: null,
+    sectionName: '',
   },
   reducers: {
     sliderAutoplay(state, action) {
       state.autoplay = action.payload.autoplay;
       state.id = action.payload.id;
     },
-    sliderStop(state) {
+    sliderStop(state, action) {
       state.autoplay = false;
       state.id = null;
+      state.sectionName = action.payload.sectionName;
     },
   },
 });

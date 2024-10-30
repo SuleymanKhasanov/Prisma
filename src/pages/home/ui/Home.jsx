@@ -14,6 +14,7 @@ import StoriesModalWindow from '@/features/stories/storiesModalWindow/ui/Stories
 import { GaneresBanner } from '@/features/ganresBanner';
 import { moviesGeners } from '@/shared/assets/genresId';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
@@ -22,6 +23,38 @@ const Home = () => {
   const topRatedMovies = useTopRatedMovies();
   const stories = useStories();
   const autoplay = useSelector((state) => state.slider.autoplay);
+  const sectionName = useSelector(
+    (state) => state.slider.sectionName,
+  );
+
+  const [weekTrendsSlide, setWeekTrendsSlide] = useState(true);
+  const [popularMoviesSlide, setPopularMoviesSlide] = useState(true);
+  const [popularShowsSlide, setPopularShowsSlide] = useState(true);
+  const [topRatedMoviesSlide, setTopRatedMoviesSlide] =
+    useState(true);
+
+  useEffect(() => {
+    if (!autoplay && sectionName === 'weekTrends') {
+      setWeekTrendsSlide(false);
+    } else {
+      setWeekTrendsSlide(true);
+    }
+    if (!autoplay && sectionName === 'popularMovies') {
+      setPopularMoviesSlide(false);
+    } else {
+      setPopularMoviesSlide(true);
+    }
+    if (!autoplay && sectionName === 'popularShows') {
+      setPopularShowsSlide(false);
+    } else {
+      setPopularShowsSlide(true);
+    }
+    if (!autoplay && sectionName === 'topRatedMovies') {
+      setTopRatedMoviesSlide(false);
+    } else {
+      setTopRatedMoviesSlide(true);
+    }
+  }, [autoplay, sectionName]);
 
   return (
     <section className={styles.homePage}>
@@ -51,7 +84,10 @@ const Home = () => {
         <h2 className={styles.sectionTitle}>Тренды недели</h2>
         <div className={styles.wrapper}>
           {weekTrends.length > 0 ? (
-            <Slider moviesAndShows={weekTrends} autoplay={autoplay}>
+            <Slider
+              moviesAndShows={weekTrends}
+              autoplay={weekTrendsSlide}
+            >
               {(element) => (
                 <Banner
                   key={element.id}
@@ -61,6 +97,7 @@ const Home = () => {
                   poster={element.poster_path}
                   genere={element.genre_ids}
                   id={element.id}
+                  sectionName="weekTrends"
                 />
               )}
             </Slider>
@@ -75,7 +112,10 @@ const Home = () => {
         <h3 className={styles.sectionTitle}>Популярные фильмы</h3>
         <div className={styles.wrapper}>
           {popularMovies.length > 0 ? (
-            <Slider moviesAndShows={popularMovies}>
+            <Slider
+              moviesAndShows={popularMovies}
+              autoplay={popularMoviesSlide}
+            >
               {(element) => (
                 <Banner
                   key={element.id}
@@ -85,6 +125,7 @@ const Home = () => {
                   poster={element.backdrop_path}
                   genere={element.genre_ids}
                   id={element.id}
+                  sectionName="popularMovies"
                 />
               )}
             </Slider>
@@ -111,7 +152,10 @@ const Home = () => {
         <h3 className={styles.sectionTitle}>Популярные ТВ-шоу</h3>
         <div className={styles.wrapper}>
           {popularShows.length > 0 ? (
-            <Slider moviesAndShows={popularShows}>
+            <Slider
+              moviesAndShows={popularShows}
+              autoplay={popularShowsSlide}
+            >
               {(element) => (
                 <Banner
                   key={element.id}
@@ -121,6 +165,7 @@ const Home = () => {
                   poster={element.backdrop_path}
                   genere={element.genre_ids}
                   id={element.id}
+                  sectionName="popularShows"
                 />
               )}
             </Slider>
@@ -135,7 +180,10 @@ const Home = () => {
         <h2 className={styles.sectionTitle}>Фильмы топ рейтинга</h2>
         <div className={styles.wrapper}>
           {topRatedMovies.length > 0 ? (
-            <Slider moviesAndShows={topRatedMovies}>
+            <Slider
+              moviesAndShows={topRatedMovies}
+              autoplay={topRatedMoviesSlide}
+            >
               {(element) => (
                 <Banner
                   key={element.id}
@@ -145,6 +193,7 @@ const Home = () => {
                   poster={element.poster_path}
                   genere={element.genre_ids}
                   id={element.id}
+                  sectionName="topRatedMovies"
                 />
               )}
             </Slider>
