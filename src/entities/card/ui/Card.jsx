@@ -1,6 +1,7 @@
 import { moviesGeners } from '@/shared/assets/genresId';
 import { seriesGenere } from '@/shared/assets/genresId';
 import styles from './styles/Card.module.css';
+import { Follback } from '@/entities/follback';
 
 const Card = ({ mediaType, title, poster, genere }) => {
   const genres =
@@ -13,11 +14,15 @@ const Card = ({ mediaType, title, poster, genere }) => {
 
   return (
     <div className={styles.card}>
-      <img
-        src={poster}
-        alt={`poster by ${title}`}
-        className={styles.cardImg}
-      />
+      {poster == 'https://image.tmdb.org/t/p/w500/null' ? (
+        <Follback />
+      ) : (
+        <img
+          src={poster}
+          alt={`poster by ${title}`}
+          className={styles.cardImg}
+        />
+      )}
       <div className={styles.cardInfo}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{genreNames.join(', ')}</p>

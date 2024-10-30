@@ -8,10 +8,18 @@
   min-width: 300px;
   flex-shrink: 0;
 }
+
 .cardImg {
   border-radius: 15px;
   width: 100%;
-  height: auto;
+  height: calc(100% + 20px);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.cardImg:hover {
+  filter: brightness(0.9) contrast(1.1);
+  transform: scale(1.05);
 }
 
 .cardInfo {

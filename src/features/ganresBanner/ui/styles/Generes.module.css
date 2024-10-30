@@ -9,11 +9,12 @@
   display: block;
   width: 100%;
   height: 100%;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .ganeres:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .action {
@@ -73,11 +74,11 @@
 }
 
 .scifi {
-  background: linear-gradient(45deg, #00c9ff, #92fe9d);
+  background: linear-gradient(45deg, #00c9ff, #61e06e);
 }
 
 .tvMovie {
-  background: linear-gradient(45deg, #f8ffae, #43c6ac);
+  background: linear-gradient(45deg, #e4f154, #26a38a);
 }
 
 .thriller {

@@ -8,17 +8,16 @@
 .weekTrends {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Оставляем gap как в HEAD */
-  margin: 15px; /* Устанавливаем margin как в main */
+  gap: 15px;
+  margin: 15px;
   height: 100%;
   width: 100%;
 }
 
 .wrapper {
   display: flex;
-  gap: 20px; /* Сохраняем gap как в main */
+  gap: 20px;
   overflow: hidden;
-  margin-top: 10px; /* Используем margin-top из main */
 }
 
 .moviesList {
@@ -54,8 +53,8 @@
   margin-bottom: 20px;
   align-items: center;
   scroll-behavior: smooth;
-  padding-right: 80px;
-  padding-left: 10px;
+  padding: 20px;
+  height: 100%;
 }
 
 .ganersList::-webkit-scrollbar {
@@ -68,6 +67,9 @@
   }
   .weekTrendsWrapper {
     width: 1350px;
+  }
+  .wrapper {
+    margin: 20px;
   }
 }
 

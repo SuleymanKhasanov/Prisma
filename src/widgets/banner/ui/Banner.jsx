@@ -3,6 +3,9 @@ import { Card } from '@/entities/card';
 import { Raiting } from '@/entities/raiting';
 import { ActionButton, ActionItem } from '@/features/action';
 import styles from './styles/Banner.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { sliderAutoplay } from '@/widgets/sliders/utils/slice';
+import { sliderStop } from '@/widgets/sliders/utils/slice';
 
 const Banner = ({
   mediaType,
@@ -14,12 +17,25 @@ const Banner = ({
   id,
 }) => {
   const [modalActionItem, setModalActionItem] = useState({});
+  const autoplay = useSelector((state) => state.slider.autoplay);
+  const dispatch = useDispatch();
 
   const handleShowModalAction = (id) => {
     setModalActionItem((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
+
+    if (autoplay) {
+      dispatch(sliderStop());
+    } else {
+      dispatch(
+        sliderAutoplay({
+          id: id,
+          autoplay: true,
+        }),
+      );
+    }
   };
 
   return (
