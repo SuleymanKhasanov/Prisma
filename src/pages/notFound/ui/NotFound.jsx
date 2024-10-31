@@ -35,7 +35,7 @@ const NotFound = () => {
       ></canvas>
       <div className={styles.notFoundTextBox}>
         <h2 className={styles.notFoundTitle}>404</h2>
-        <p className={styles.notFoundText}>Не найдено</p>
+        <p className={styles.notFoundText}>cтраница не найдена</p>
       </div>
     </div>
   );

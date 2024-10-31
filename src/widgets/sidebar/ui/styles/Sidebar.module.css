@@ -55,3 +55,15 @@
   width: 100%;
   border-radius: 5px;
 }
+
+.sidebarMenu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  padding: 15px;
+  transition: all 0.2s ease;
+  color: inherit;
+  width: 100%;
+  border-radius: 5px;
+}

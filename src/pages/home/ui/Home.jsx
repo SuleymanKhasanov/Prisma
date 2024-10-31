@@ -15,6 +15,7 @@ import { GaneresBanner } from '@/features/ganresBanner';
 import { moviesGeners } from '@/shared/assets/genresId';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
 
 const Home = () => {
   const weekTrends = useWeekTrending();
@@ -22,39 +23,8 @@ const Home = () => {
   const popularShows = usePopularShows();
   const topRatedMovies = useTopRatedMovies();
   const stories = useStories();
-  const autoplay = useSelector((state) => state.slider.autoplay);
-  const sectionName = useSelector(
-    (state) => state.slider.sectionName,
-  );
 
-  const [weekTrendsSlide, setWeekTrendsSlide] = useState(true);
-  const [popularMoviesSlide, setPopularMoviesSlide] = useState(true);
-  const [popularShowsSlide, setPopularShowsSlide] = useState(true);
-  const [topRatedMoviesSlide, setTopRatedMoviesSlide] =
-    useState(true);
-
-  useEffect(() => {
-    if (!autoplay && sectionName === 'weekTrends') {
-      setWeekTrendsSlide(false);
-    } else {
-      setWeekTrendsSlide(true);
-    }
-    if (!autoplay && sectionName === 'popularMovies') {
-      setPopularMoviesSlide(false);
-    } else {
-      setPopularMoviesSlide(true);
-    }
-    if (!autoplay && sectionName === 'popularShows') {
-      setPopularShowsSlide(false);
-    } else {
-      setPopularShowsSlide(true);
-    }
-    if (!autoplay && sectionName === 'topRatedMovies') {
-      setTopRatedMoviesSlide(false);
-    } else {
-      setTopRatedMoviesSlide(true);
-    }
-  }, [autoplay, sectionName]);
+  const sliderControls = useSectionAutoplay();
 
   return (
     <section className={styles.homePage}>
@@ -86,7 +56,7 @@ const Home = () => {
           {weekTrends.length > 0 ? (
             <Slider
               moviesAndShows={weekTrends}
-              autoplay={weekTrendsSlide}
+              autoplay={sliderControls.weekTrends}
             >
               {(element) => (
                 <Banner
@@ -114,7 +84,7 @@ const Home = () => {
           {popularMovies.length > 0 ? (
             <Slider
               moviesAndShows={popularMovies}
-              autoplay={popularMoviesSlide}
+              autoplay={sliderControls.popularMovies}
             >
               {(element) => (
                 <Banner
@@ -154,7 +124,7 @@ const Home = () => {
           {popularShows.length > 0 ? (
             <Slider
               moviesAndShows={popularShows}
-              autoplay={popularShowsSlide}
+              autoplay={sliderControls.popularShows}
             >
               {(element) => (
                 <Banner
@@ -182,7 +152,7 @@ const Home = () => {
           {topRatedMovies.length > 0 ? (
             <Slider
               moviesAndShows={topRatedMovies}
-              autoplay={topRatedMoviesSlide}
+              autoplay={sliderControls.topRatedMovies}
             >
               {(element) => (
                 <Banner
