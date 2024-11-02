@@ -84,11 +84,11 @@ export const getMovieTrailerInfo = async (movieId) => {
 
 export const getMoviesByGenre = async (genreId, page = 1) => {
   try {
-    const response = await axios.get(`${BASE_URL}movie/popular`, {
+    const response = await axios.get(`${BASE_URL}discover/movie`, {
       params: {
         api_key: API_KEY,
         language: 'ru-RU',
-        with_genres: genreId,
+        with_genres: String(genreId),
         page,
       },
     });

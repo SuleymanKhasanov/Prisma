@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react';
 import { getMoviesByGenre } from '@/shared/api/api';
+import { useSelector } from 'react-redux';
 
 const useFilterMoviesByGenre = () => {
-  const [genreId, setGenreId] = useState(null);
+  const genreId = useSelector((state) => state.filter);
+
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
-      if (genreId) {
-        try {
-          const fetchedMovies = await getMoviesByGenre(genreId);
-          setMovies(fetchedMovies);
-        } catch (error) {
-          console.error('Ошибка при загрузке фильмов:', error);
-        }
-      } else {
-        setMovies([]);
+      if (!genreId) return;
+      try {
+        const fetchedMovies = await getMoviesByGenre(genreId);
+        setMovies(fetchedMovies);
+      } catch (error) {
+        console.error('Ошибка при загрузке фильмов:', error);
       }
     };
+
     fetchMovies();
   }, [genreId]);
 
-  return { movies, setGenreId };
+  return movies;
 };
 
 export default useFilterMoviesByGenre;
