@@ -2,6 +2,8 @@ import { moviesGeners } from '@/shared/assets/genresId';
 import close from '@/shared/icons/close.svg';
 import styles from './styles/GenreFilter.module.css';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { filter } from '../utils/slice/slice';
 
 const GenreFilter = () => {
   const genreClass = (id) => {
@@ -51,8 +53,16 @@ const GenreFilter = () => {
 
   const [selectedGenre, setSelectedGenre] = useState(null);
 
+  const dispatch = useDispatch();
+
   const handleOnClick = (id) => {
     setSelectedGenre(selectedGenre === id ? null : id);
+    if (id) {
+      dispatch(filter(id));
+    }
+    if (!id) {
+      dispatch(filter([]));
+    }
   };
 
   return (
@@ -69,7 +79,7 @@ const GenreFilter = () => {
           />
         </li>
         {moviesGeners.genres
-          .filter((element) => element.id !== 16) // Фильтруем элементы с id 16
+          .filter((element) => element.id !== 16)
           .map((element) => (
             <li
               key={element.id}
