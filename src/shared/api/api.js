@@ -81,3 +81,20 @@ export const getMovieTrailerInfo = async (movieId) => {
     throw error;
   }
 };
+
+export const getMoviesByGenre = async (genreId, page = 1) => {
+  try {
+    const response = await axios.get(`${BASE_URL}movie/popular`, {
+      params: {
+        api_key: API_KEY,
+        language: 'ru-RU',
+        with_genres: genreId,
+        page,
+      },
+    });
+
+    return response.data.results;
+  } catch (error) {
+    throw error;
+  }
+};

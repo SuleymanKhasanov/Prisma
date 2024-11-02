@@ -23,8 +23,6 @@ const Home = () => {
 
   const sliderControls = useSectionAutoplay();
 
-  console.log(popularMovies);
-
   return (
     <section className={styles.homePage}>
       {/* Stories Banner */}
