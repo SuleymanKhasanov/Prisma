@@ -18,12 +18,13 @@ export const getWeekTranding = async () => {
   }
 };
 
-export const getPopularMovies = async () => {
+export const getPopularMovies = async (page = 1) => {
   try {
     const response = await axios.get(`${BASE_URL}movie/popular`, {
       params: {
         api_key: API_KEY,
         language: 'ru-RU',
+        page,
       },
     });
 

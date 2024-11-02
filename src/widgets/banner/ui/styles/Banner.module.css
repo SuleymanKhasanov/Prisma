@@ -29,3 +29,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+.releseTitle {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  background-color: #000;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.releseDate {
+  color: #0e7630;
+}

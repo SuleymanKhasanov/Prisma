@@ -16,6 +16,7 @@ const Banner = ({
   name,
   id,
   sectionName,
+  date,
 }) => {
   const [modalActionItem, setModalActionItem] = useState({});
   const autoplay = useSelector((state) => state.slider.autoplay);
@@ -43,6 +44,8 @@ const Banner = ({
     }
   };
 
+  const releseDate = date?.split('-')[0];
+
   return (
     <div className={styles.banner}>
       <div className={styles.bannerItem}>
@@ -51,6 +54,7 @@ const Banner = ({
           poster={`https://image.tmdb.org/t/p/w500/${poster}`}
           mediaType={mediaType}
           genere={genere}
+          date={releseDate}
         />
       </div>
       <div className={styles.bannerAction}>
@@ -59,6 +63,7 @@ const Banner = ({
           onClick={() => handleShowModalAction(id, sectionName)}
           id={id}
         />
+
         {modalActionItem[id] ? <ActionItem /> : null}
       </div>
     </div>

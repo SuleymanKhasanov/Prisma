@@ -6,8 +6,9 @@
   box-sizing: border-box;
 }
 
-.sectionTitleWriper {
-  margin-top: 20px;
+.sectionTitleWrapper {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 @media screen and (min-width: 768px) {
