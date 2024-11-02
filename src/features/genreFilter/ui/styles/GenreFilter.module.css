@@ -1,0 +1,156 @@
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.8) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 2;
+}
+
+.genresList {
+  display: flex;
+  gap: 10px;
+  width: 95%;
+  overflow-x: auto;
+  align-items: center;
+  padding: 15px;
+}
+
+.genresList::-webkit-scrollbar {
+  display: none;
+}
+
+.genresItem {
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-weight: bold;
+  background-color: #1e1e1e;
+  min-width: auto;
+}
+
+.genresItem:hover {
+  transform: scale(1.05);
+}
+
+.genresItem:active {
+  transform: scale(0.8);
+}
+
+.genresReset {
+  padding: 12px;
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.genresReset:hover {
+  transform: scale(1.05);
+  background-color: #113635;
+}
+
+.genresReset:active {
+  transform: scale(0.8);
+}
+
+.action {
+  background: linear-gradient(45deg, #ff0000, #ff9900);
+  color: #fff;
+}
+
+.adventure {
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: #fff;
+}
+
+.animation {
+  background: linear-gradient(45deg, #ffcc00, #ff66ff);
+  color: #fff;
+}
+
+.comedy {
+  background: linear-gradient(45deg, #ff9900, #ffcc00);
+  color: #fff;
+}
+
+.crime {
+  background: linear-gradient(45deg, #4b4b4b, #1e1e1e);
+  color: #fff;
+}
+
+.documentary {
+  background: linear-gradient(45deg, #00b09b, #96c93d);
+  color: #fff;
+}
+
+.drama {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: #fff;
+}
+
+.family {
+  background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
+  color: #fff;
+}
+
+.fantasy {
+  background: linear-gradient(45deg, #c94b4b, #4b134f);
+  color: #fff;
+}
+
+.history {
+  background: linear-gradient(45deg, #decba4, #3e5151);
+  color: #fff;
+}
+
+.horror {
+  background: linear-gradient(45deg, #000000, #434343);
+  color: #fff;
+}
+
+.music {
+  background: linear-gradient(45deg, #ff5f6d, #ffc371);
+  color: #fff;
+}
+
+.mystery {
+  background: linear-gradient(45deg, #232526, #414345);
+  color: #fff;
+}
+
+.romance {
+  background: linear-gradient(45deg, #ff9a9e, #fecfef);
+  color: #fff;
+}
+
+.scifi {
+  background: linear-gradient(45deg, #00c9ff, #61e06e);
+  color: #fff;
+}
+
+.tvMovie {
+  background: linear-gradient(45deg, #e4f154, #26a38a);
+  color: #fff;
+}
+
+.thriller {
+  background: linear-gradient(45deg, #000000, #e74c3c);
+  color: #fff;
+}
+
+.war {
+  background: linear-gradient(45deg, #536976, #292e49);
+  color: #fff;
+}
+
+.western {
+  background: linear-gradient(45deg, #d38312, #a83279);
+  color: #fff;
+}
