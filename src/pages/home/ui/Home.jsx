@@ -8,13 +8,10 @@ import useStories from '@/shared/hooks/useStories';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import { StoriesBanner } from '@/features/stories';
 import 'swiper/css';
-
 import styles from './styles/Home.module.css';
 import StoriesModalWindow from '@/features/stories/storiesModalWindow/ui/StoriesModalWindow';
 import { GaneresBanner } from '@/features/ganresBanner';
 import { moviesGeners } from '@/shared/assets/genresId';
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
 
 const Home = () => {
@@ -25,6 +22,8 @@ const Home = () => {
   const stories = useStories();
 
   const sliderControls = useSectionAutoplay();
+
+  console.log(popularMovies);
 
   return (
     <section className={styles.homePage}>
@@ -68,6 +67,7 @@ const Home = () => {
                   genere={element.genre_ids}
                   id={element.id}
                   sectionName="weekTrends"
+                  date={element.release_date}
                 />
               )}
             </Slider>
@@ -81,9 +81,9 @@ const Home = () => {
       <div className={styles.moviesList}>
         <h3 className={styles.sectionTitle}>Популярные фильмы</h3>
         <div className={styles.wrapper}>
-          {popularMovies.length > 0 ? (
+          {popularMovies.popularMovies.length > 0 ? (
             <Slider
-              moviesAndShows={popularMovies}
+              moviesAndShows={popularMovies.popularMovies}
               autoplay={sliderControls.popularMovies}
             >
               {(element) => (
@@ -96,6 +96,7 @@ const Home = () => {
                   genere={element.genre_ids}
                   id={element.id}
                   sectionName="popularMovies"
+                  date={element.release_date}
                 />
               )}
             </Slider>
@@ -136,6 +137,7 @@ const Home = () => {
                   genere={element.genre_ids}
                   id={element.id}
                   sectionName="popularShows"
+                  date={element.release_date}
                 />
               )}
             </Slider>
@@ -164,6 +166,7 @@ const Home = () => {
                   genere={element.genre_ids}
                   id={element.id}
                   sectionName="topRatedMovies"
+                  date={element.release_date}
                 />
               )}
             </Slider>
