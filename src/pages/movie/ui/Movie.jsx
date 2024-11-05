@@ -8,40 +8,64 @@ import styles from './styles/Movie.module.css';
 import useFilterMoviesByGenre from '@/features/genreFilter/utils/hooks/useFilterMoviesByGenre';
 
 const Movie = () => {
-  const { popularMovies, isLoading, movieContainerRef } =
-    useLoadMovies();
-  const filteredMovies = useFilterMoviesByGenre();
-
-  const [moviesByGenre, setMoviesByGenre] = useState([]);
+  const {
+    popularMovies,
+    isLoading: isPopularLoading,
+    movieContainerRef,
+    setPage: setPopularPage,
+  } = useLoadMovies();
+  const {
+    movies: moviesByGenre,
+    isLoading: isFilteredLoading,
+    setPage: setGenrePage,
+  } = useFilterMoviesByGenre();
+  const [isGenreSelected, setIsGenreSelected] = useState(false);
 
   useEffect(() => {
-    if (filteredMovies.length > 0) {
-      setMoviesByGenre(filteredMovies);
+    setIsGenreSelected(moviesByGenre.length > 0);
+  }, [moviesByGenre]);
+
+  const handleScroll = (e) => {
+    const target = e.target;
+    if (
+      target.scrollHeight - target.scrollTop <=
+      target.clientHeight + 500
+    ) {
+      if (isGenreSelected) {
+        setGenrePage((prevPage) => prevPage + 1);
+      }
     }
-  }, [filteredMovies]);
+  };
+
+  useEffect(() => {
+    const container = movieContainerRef.current;
+    container?.addEventListener('scroll', handleScroll);
+    return () =>
+      container?.removeEventListener('scroll', handleScroll);
+  }, [isGenreSelected]);
 
   return (
-    <>
-      <section
-        ref={movieContainerRef}
-        className={`${styles.movie}`}
-        style={{ overflowY: 'auto', maxHeight: '100vh' }}
-      >
-        <div className={styles.sectionTitleWrapper}>
-          <h2 className={styles.sectionTitle}>Популярные фильмы</h2>
-        </div>
-        <div className={styles.moviesContainer}>
-          {moviesByGenre.length > 0 ? (
-            <FilteredMovies filteredMovies={filteredMovies} />
-          ) : (
-            <PopularMovies popularMovies={popularMovies} />
-          )}
+    <section
+      ref={movieContainerRef}
+      className={`${styles.movie}`}
+      style={{ overflowY: 'auto', maxHeight: '100vh' }}
+    >
+      <div className={styles.sectionTitleWrapper}>
+        <h2 className={styles.sectionTitle}>Фильмы</h2>
+      </div>
+      <div className={styles.moviesContainer}>
+        {isGenreSelected ? (
+          <FilteredMovies filteredMovies={moviesByGenre} />
+        ) : (
+          <PopularMovies popularMovies={popularMovies} />
+        )}
 
-          {isLoading && <BannerSkeleton count={10} size="big" />}
-        </div>
-        <GenreFilter />
-      </section>
-    </>
+        {(isPopularLoading || isFilteredLoading) && (
+          <BannerSkeleton count={40} size="big" />
+        )}
+      </div>
+      <GenreFilter />
+    </section>
   );
 };
 

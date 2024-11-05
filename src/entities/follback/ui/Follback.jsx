@@ -4,7 +4,7 @@ import follbackIcon from '@/shared/icons/follback.svg';
 const Follback = () => {
   return (
     <div className={styles.follback}>
-      <img src={follbackIcon} />
+      <img className={styles.follbackIcon} src={follbackIcon} />
     </div>
   );
 };

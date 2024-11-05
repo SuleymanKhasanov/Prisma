@@ -14,6 +14,7 @@ const usePopularMovies = (page) => {
         const filteredMovies = movies.filter(
           (movie) => !movie.genre_ids.includes(16),
         );
+
         setPopularMovies((prevMovies) => {
           const uniqueMovies = filteredMovies.filter(
             (newMovie) =>

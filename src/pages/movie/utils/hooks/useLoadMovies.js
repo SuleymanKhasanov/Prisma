@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import usePopularMovies from '@/shared/hooks/usePopularMovies';
 
 const useLoadMovies = () => {
@@ -6,6 +6,7 @@ const useLoadMovies = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const { popularMovies: newMovies, isLoading } =
     usePopularMovies(page);
+  const movieContainerRef = useRef(null);
 
   useEffect(() => {
     setPopularMovies((prevMovies) => {
@@ -29,11 +30,13 @@ const useLoadMovies = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const container = movieContainerRef.current;
+    container?.addEventListener('scroll', handleScroll);
+    return () =>
+      container?.removeEventListener('scroll', handleScroll);
   }, [isLoading]);
 
-  return { popularMovies, isLoading };
+  return { popularMovies, isLoading, movieContainerRef };
 };
 
 export default useLoadMovies;
