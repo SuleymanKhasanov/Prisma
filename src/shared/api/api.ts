@@ -34,12 +34,13 @@ export const getPopularMovies = async (page = 1) => {
   }
 };
 
-export const getPopularSeries = async () => {
+export const getPopularSeries = async (page = 1) => {
   try {
     const response = await axios.get(`${BASE_URL}tv/popular`, {
       params: {
         api_key: API_KEY,
         language: 'ru-RU',
+        page,
       },
     });
 
@@ -85,6 +86,23 @@ export const getMovieTrailerInfo = async (movieId) => {
 export const getMoviesByGenre = async (genreId, page = 1) => {
   try {
     const response = await axios.get(`${BASE_URL}discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        language: 'ru-RU',
+        with_genres: String(genreId),
+        page,
+      },
+    });
+
+    return response.data.results;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getSeriesByGenre = async (genreId, page = 1) => {
+  try {
+    const response = await axios.get(`${BASE_URL}discover/tv`, {
       params: {
         api_key: API_KEY,
         language: 'ru-RU',

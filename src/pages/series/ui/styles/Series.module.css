@@ -1,0 +1,36 @@
+.movie {
+  width: 100%;
+}
+
+.moviesContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.sectionTitleWrapper {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .moviesContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .moviesContainer {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .moviesContainer {
+    grid-template-columns: repeat(4, 1fr);
+    width: 94%;
+  }
+}

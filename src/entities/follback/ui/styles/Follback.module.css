@@ -1,5 +1,6 @@
 .follback {
   width: 100%;
+  min-height: 190px;
   height: 100%;
   border-radius: 15px;
   background-color: #232323;
