@@ -57,14 +57,17 @@ const Movie = () => {
         {isGenreSelected ? (
           <FilteredMovies filteredMovies={moviesByGenre} />
         ) : (
-          <PopularMovies popularMovies={popularMovies} />
+          <PopularMovies
+            popularMovies={popularMovies}
+            mediaType={'movie'}
+          />
         )}
 
         {(isPopularLoading || isFilteredLoading) && (
           <BannerSkeleton count={40} size="big" />
         )}
       </div>
-      <GenreFilter />
+      <GenreFilter genereType={'movie'} />
     </section>
   );
 };

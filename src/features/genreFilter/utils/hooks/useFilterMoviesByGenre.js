@@ -15,7 +15,6 @@ const useFilterMoviesByGenre = () => {
       try {
         const fetchedMovies = await getMoviesByGenre(genreId, page);
 
-        // Исключение фильмов с genre_id 16
         const filteredMovies = fetchedMovies.filter(
           (movie) => !movie.genre_ids.includes(16),
         );

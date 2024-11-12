@@ -61,96 +61,141 @@
 }
 
 .action {
-  background: linear-gradient(45deg, #ff0000, #ff9900);
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
   color: #fff;
 }
 
 .adventure {
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  background: linear-gradient(to right, #56ccf2, #2f80ed);
   color: #fff;
 }
 
 .animation {
-  background: linear-gradient(45deg, #ffcc00, #ff66ff);
+  background: linear-gradient(to right, #ff6a00, #ee0979);
   color: #fff;
 }
 
 .comedy {
-  background: linear-gradient(45deg, #ff9900, #ffcc00);
+  background: linear-gradient(to right, #fceabb, #f8b500);
   color: #fff;
 }
 
 .crime {
-  background: linear-gradient(45deg, #4b4b4b, #1e1e1e);
+  background: linear-gradient(to right, #232526, #414345);
   color: #fff;
 }
 
 .documentary {
-  background: linear-gradient(45deg, #00b09b, #96c93d);
+  background: linear-gradient(to right, #00c6ff, #0072ff);
   color: #fff;
 }
 
 .drama {
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  background: linear-gradient(to right, #ff6a00, #ee0979);
   color: #fff;
 }
 
 .family {
-  background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
+  background: linear-gradient(to right, #f5af19, #f7b731);
   color: #fff;
 }
 
 .fantasy {
-  background: linear-gradient(45deg, #c94b4b, #4b134f);
+  background: linear-gradient(to right, #00d2ff, #3a7bd5);
   color: #fff;
 }
 
 .history {
-  background: linear-gradient(45deg, #decba4, #3e5151);
+  background: linear-gradient(to right, #333333, #e6e6e6);
   color: #fff;
 }
 
 .horror {
-  background: linear-gradient(45deg, #000000, #434343);
+  background: linear-gradient(to right, #3f3f3f, #666666);
   color: #fff;
 }
 
 .music {
-  background: linear-gradient(45deg, #ff5f6d, #ffc371);
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
   color: #fff;
 }
 
 .mystery {
-  background: linear-gradient(45deg, #232526, #414345);
+  background: linear-gradient(to right, #2c3e50, #fd746c);
   color: #fff;
 }
 
 .romance {
-  background: linear-gradient(45deg, #ff9a9e, #fecfef);
+  background: linear-gradient(to right, #fbbd61, #f79c42);
   color: #fff;
 }
 
 .scifi {
-  background: linear-gradient(45deg, #00c9ff, #61e06e);
+  background: linear-gradient(to right, #00c6ff, #0072ff);
   color: #fff;
 }
 
 .tvMovie {
-  background: linear-gradient(45deg, #e4f154, #26a38a);
+  background: linear-gradient(to right, #36d1dc, #5b86e5);
   color: #fff;
 }
 
 .thriller {
-  background: linear-gradient(45deg, #000000, #e74c3c);
+  background: linear-gradient(to right, #000428, #004e92);
   color: #fff;
 }
 
 .war {
-  background: linear-gradient(45deg, #536976, #292e49);
+  background: linear-gradient(to right, #00c6ff, #0072ff);
   color: #fff;
 }
 
 .western {
-  background: linear-gradient(45deg, #d38312, #a83279);
+  background: linear-gradient(to right, #f9d423, #ff4e50);
+  color: #fff;
+}
+
+.actionAdventure {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: #fff;
+}
+
+.kids {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: #fff;
+}
+
+.news {
+  background: linear-gradient(to right, #ff9a8b, #ff6a00);
+  color: #fff;
+}
+
+.reality {
+  background: linear-gradient(to right, #56ccf2, #2f80ed);
+  color: #fff;
+}
+
+.fantasySeries {
+  background: linear-gradient(to right, #00d2ff, #3a7bd5);
+  color: #fff;
+}
+
+.soapOpera {
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  color: #fff;
+}
+
+.talkShow {
+  background: linear-gradient(to right, #3f3f3f, #666666);
+  color: #fff;
+}
+
+.warPolitics {
+  background: linear-gradient(to right, #232526, #414345);
+  color: #fff;
+}
+
+.default {
+  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
   color: #fff;
 }

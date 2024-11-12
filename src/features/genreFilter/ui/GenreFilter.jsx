@@ -1,11 +1,12 @@
 import { moviesGeners } from '@/shared/assets/genresId';
+import { seriesGenere } from '@/shared/assets/genresId';
 import close from '@/shared/icons/close.svg';
 import styles from './styles/GenreFilter.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filter } from '../utils/slice/slice';
 
-const GenreFilter = () => {
+const GenreFilter = ({ genereType }) => {
   const genreClass = (id) => {
     switch (id) {
       case 28:
@@ -46,12 +47,39 @@ const GenreFilter = () => {
         return styles.war; // Военный
       case 37:
         return styles.western; // Вестерн
+      case 10759:
+        return styles.actionAdventure; // Боевик и Приключения
+      case 10762:
+        return styles.kids; // Детский
+      case 10763:
+        return styles.news; // Новости
+      case 10764:
+        return styles.reality; // Реалити-шоу
+      case 10765:
+        return styles.fantasySeries; // Фэнтези
+      case 10766:
+        return styles.soapOpera; // Мыльная опера
+      case 10767:
+        return styles.talkShow; // Ток-шоу
+      case 10768:
+        return styles.warPolitics; // Война и Политика
       default:
         return styles.default; // Дефолтный стиль
     }
   };
 
   const [selectedGenre, setSelectedGenre] = useState(null);
+
+  const [filterMediaType, setFilterMediaType] = useState();
+
+  useEffect(() => {
+    if (genereType === 'series') {
+      setFilterMediaType(seriesGenere);
+    }
+    if (genereType === 'movie') {
+      setFilterMediaType(moviesGeners);
+    }
+  }, [genereType]);
 
   const dispatch = useDispatch();
 
@@ -78,7 +106,7 @@ const GenreFilter = () => {
             title="Сбросить фильтры"
           />
         </li>
-        {moviesGeners.genres
+        {filterMediaType?.genres
           .filter((element) => element.id !== 16)
           .map((element) => (
             <li
