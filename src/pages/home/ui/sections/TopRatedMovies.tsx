@@ -14,7 +14,7 @@ const TopRatedMovies = () => {
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Фильмы топ рейтинга</h2>
         <div className={styles.wrapper}>
-          {topRatedMovies.length > 0 ? (
+          {topRatedMovies?.length > 0 ? (
             <Slider
               moviesAndShows={topRatedMovies}
               autoplay={sliderControls.topRatedMovies}

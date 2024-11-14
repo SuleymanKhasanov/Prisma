@@ -15,7 +15,7 @@ const PopulerTvShows = () => {
       <div className={styles.moviesList}>
         <h3 className={styles.sectionTitle}>Популярные ТВ-шоу</h3>
         <div className={styles.wrapper}>
-          {popularShows.popularShows.length > 0 ? (
+          {popularShows?.popularShows.length > 0 ? (
             <Slider
               moviesAndShows={popularShows.popularShows}
               autoplay={sliderControls.popularShows}

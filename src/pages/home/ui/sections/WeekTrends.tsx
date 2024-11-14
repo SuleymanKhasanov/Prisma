@@ -14,7 +14,7 @@ const WeekTrends = () => {
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Тренды недели</h2>
         <div className={styles.wrapper}>
-          {weekTrends.length > 0 ? (
+          {weekTrends?.length > 0 ? (
             <Slider
               moviesAndShows={weekTrends}
               autoplay={sliderControls.weekTrends}

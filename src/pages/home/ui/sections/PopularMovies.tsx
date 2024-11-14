@@ -8,13 +8,13 @@ import styles from './styles/PopularMovies.module.css';
 const PopularMovies = () => {
   const popularMovies = usePopularMovies();
   const sliderControls = useSectionAutoplay();
+
   return (
     <>
-      {/* Popular Movies */}
       <div className={styles.moviesList}>
         <h3 className={styles.sectionTitle}>Популярные фильмы</h3>
         <div className={styles.wrapper}>
-          {popularMovies.popularMovies.length > 0 ? (
+          {popularMovies?.popularMovies.length > 0 ? (
             <Slider
               moviesAndShows={popularMovies.popularMovies}
               autoplay={sliderControls.popularMovies}
