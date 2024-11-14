@@ -2,7 +2,7 @@ import React from 'react';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import { Banner } from '@/widgets/banner';
 
-const FilteredMovies = ({ filteredMovies }) => {
+const FilteredSeries = ({ filteredMovies }) => {
   return (
     <>
       {filteredMovies.length > 0 ? (
@@ -26,4 +26,4 @@ const FilteredMovies = ({ filteredMovies }) => {
   );
 };
 
-export default FilteredMovies;
+export default FilteredSeries;

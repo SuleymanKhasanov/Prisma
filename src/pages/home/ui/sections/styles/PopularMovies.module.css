@@ -1,0 +1,14 @@
+.moviesList {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 25px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+}

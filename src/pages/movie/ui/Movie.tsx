@@ -2,30 +2,27 @@ import React, { useEffect, useState } from 'react';
 import useLoadMovies from '../utils/hooks/useLoadMovies';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import { GenreFilter } from '@/features/genreFilter';
-import FilteredMovies from './FilteredMovies';
-import PopularMovies from './PopularMovies';
-import styles from './styles/Series.module.css';
-import useFilterSeriesByGenre from '@/features/genreFilter/utils/hooks/useFilterSeriesByGenre';
+import FilteredMovies from './sections/FilteredMovies';
+import PopularMovies from './sections/PopularMovies';
+import styles from './styles/Movie.module.css';
+import useFilterMoviesByGenre from '@/features/genreFilter/utils/hooks/useFilterMoviesByGenre';
 
-const Series = () => {
+const Movie = () => {
   const {
-    popularShows,
+    popularMovies,
     isLoading: isPopularLoading,
     movieContainerRef,
     setPage: setPopularPage,
   } = useLoadMovies();
   const {
-    series: moviesByGenre = [],
+    movies: moviesByGenre,
     isLoading: isFilteredLoading,
     setPage: setGenrePage,
-  } = useFilterSeriesByGenre();
-
+  } = useFilterMoviesByGenre();
   const [isGenreSelected, setIsGenreSelected] = useState(false);
 
   useEffect(() => {
-    if (moviesByGenre && Array.isArray(moviesByGenre)) {
-      setIsGenreSelected(moviesByGenre.length > 0);
-    }
+    setIsGenreSelected(moviesByGenre.length > 0);
   }, [moviesByGenre]);
 
   const handleScroll = (e) => {
@@ -42,11 +39,9 @@ const Series = () => {
 
   useEffect(() => {
     const container = movieContainerRef.current;
-    if (container) {
-      container.addEventListener('scroll', handleScroll);
-      return () =>
-        container.removeEventListener('scroll', handleScroll);
-    }
+    container?.addEventListener('scroll', handleScroll);
+    return () =>
+      container?.removeEventListener('scroll', handleScroll);
   }, [isGenreSelected]);
 
   return (
@@ -56,15 +51,15 @@ const Series = () => {
       style={{ overflowY: 'auto', maxHeight: '100vh' }}
     >
       <div className={styles.sectionTitleWrapper}>
-        <h2 className={styles.sectionTitle}>Сериалы и ТВ-шоу</h2>
+        <h2 className={styles.sectionTitle}>Фильмы</h2>
       </div>
       <div className={styles.moviesContainer}>
         {isGenreSelected ? (
           <FilteredMovies filteredMovies={moviesByGenre} />
         ) : (
           <PopularMovies
-            popularMovies={popularShows}
-            mediaType={'tv'}
+            popularMovies={popularMovies}
+            mediaType={'movie'}
           />
         )}
 
@@ -72,9 +67,9 @@ const Series = () => {
           <BannerSkeleton count={40} size="big" />
         )}
       </div>
-      <GenreFilter genereType={'series'} />
+      <GenreFilter genereType={'movie'} />
     </section>
   );
 };
 
-export default Series;
+export default Movie;

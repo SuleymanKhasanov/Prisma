@@ -65,7 +65,7 @@ export const getTopRatedMovies = async () => {
   }
 };
 
-export const getMovieTrailerInfo = async (movieId) => {
+export const getMovieTrailerInfo = async (movieId: number) => {
   try {
     const response = await axios.get(
       `${BASE_URL}movie/${movieId}/videos`,
@@ -83,7 +83,10 @@ export const getMovieTrailerInfo = async (movieId) => {
   }
 };
 
-export const getMoviesByGenre = async (genreId, page = 1) => {
+export const getMoviesByGenre = async (
+  genreId: number,
+  page: number = 1,
+) => {
   try {
     const response = await axios.get(`${BASE_URL}discover/movie`, {
       params: {
@@ -100,7 +103,7 @@ export const getMoviesByGenre = async (genreId, page = 1) => {
   }
 };
 
-export const getSeriesByGenre = async (genreId, page = 1) => {
+export const getSeriesByGenre = async (genreId: number, page = 1) => {
   try {
     const response = await axios.get(`${BASE_URL}discover/tv`, {
       params: {

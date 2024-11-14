@@ -1,0 +1,23 @@
+.weekTrends {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 15px;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.moviesList {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 25px;
+}
