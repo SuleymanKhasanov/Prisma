@@ -2,7 +2,7 @@ import React from 'react';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import { Banner } from '@/widgets/banner';
 
-const PopularMovies = ({ popularMovies }) => {
+const PopularSeries = ({ popularMovies }) => {
   return (
     <>
       {popularMovies.length > 0 ? (
@@ -26,4 +26,4 @@ const PopularMovies = ({ popularMovies }) => {
   );
 };
 
-export default PopularMovies;
+export default PopularSeries;

@@ -1,0 +1,13 @@
+.stories {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 20px;
+  gap: 20px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+.stories::-webkit-scrollbar {
+  display: none;
+}

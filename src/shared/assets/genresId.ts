@@ -1,4 +1,6 @@
-export const moviesGeners = {
+import GenreCollection from './modules/GenereCollectionInteface';
+
+export const moviesGeners: GenreCollection = {
   genres: [
     { id: 28, name: 'Боевик' },
     { id: 12, name: 'Приключения' },
@@ -22,7 +24,7 @@ export const moviesGeners = {
   ],
 };
 
-export const seriesGenere = {
+export const seriesGenere: GenreCollection = {
   genres: [
     { id: 10759, name: 'Боевик и Приключения' },
     { id: 16, name: 'Мультфильм' },
