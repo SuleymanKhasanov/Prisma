@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 import { getPopularSeries } from '../api/api';
 
-const usePopularShows = (page) => {
-  const [popularShows, setPopularShows] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+const usePopularShows = (page: number) => {
+  interface Movie {
+    id: number;
+    genre_ids: number[];
+    title: string;
+  }
+
+  const [popularShows, setPopularShows] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchPopularSeries = async () => {
       setIsLoading(true);
       try {
-        const popularSeriesTV = await getPopularSeries(page);
+        const popularSeriesTV: Movie[] = await getPopularSeries(page);
 
         const filteredShows = popularSeriesTV.filter(
           (movie) => !movie.genre_ids.includes(16),
