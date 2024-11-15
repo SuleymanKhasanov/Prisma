@@ -1,26 +1,41 @@
 import { useEffect, useState } from 'react';
 import { getPopularSeries } from '../api/api';
 
-const usePopularShows = (page) => {
-  const [popularShows, setPopularShows] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+// Типы для сериала
+interface Show {
+  id: number;
+  title: string;
+  genre_ids: number[];
+}
+
+// Тип для возвращаемого значения хука
+interface UsePopularShowsReturn {
+  popularShows: Show[];
+  isLoading: boolean;
+}
+
+const usePopularShows = (page: number): UsePopularShowsReturn => {
+  const [popularShows, setPopularShows] = useState<Show[]>([]); // Типизируем состояние как массив сериалов
+  const [isLoading, setIsLoading] = useState<boolean>(false); // Типизируем состояние как булево значение
 
   useEffect(() => {
     const fetchPopularSeries = async () => {
       setIsLoading(true);
       try {
-        const popularSeriesTV = await getPopularSeries(page);
+        const popularSeriesTV: Show[] = await getPopularSeries(page); // Типизируем результат API-запроса
 
+        // Фильтруем сериалы
         const filteredShows = popularSeriesTV.filter(
-          (movie) => !movie.genre_ids.includes(16),
+          (show) => !show.genre_ids.includes(16),
         );
 
-        setPopularShows((prevMovies) => {
-          const uniqueMovies = filteredShows.filter(
-            (newMovie) =>
-              !prevMovies.some((movie) => movie.id === newMovie.id),
+        // Обновляем состояние сериалов, исключая дубликаты
+        setPopularShows((prevShows) => {
+          const uniqueShows = filteredShows.filter(
+            (newShow) =>
+              !prevShows.some((show) => show.id === newShow.id),
           );
-          return [...prevMovies, ...uniqueMovies];
+          return [...prevShows, ...uniqueShows];
         });
       } catch (error) {
         console.log(error);

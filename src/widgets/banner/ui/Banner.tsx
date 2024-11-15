@@ -7,7 +7,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { sliderAutoplay } from '@/widgets/sliders/utils/slice';
 import { sliderStop } from '@/widgets/sliders/utils/slice';
 
-const Banner = ({
+interface BannerType {
+  mediaType: string;
+  title?: string;
+  rating: number;
+  poster: string;
+  genere: number[];
+  name?: string;
+  id: number;
+  sectionName: string;
+  date: string;
+}
+
+const Banner: React.FC<BannerType> = ({
   mediaType,
   title,
   rating,
@@ -22,8 +34,8 @@ const Banner = ({
   const autoplay = useSelector((state) => state.slider.autoplay);
   const dispatch = useDispatch();
 
-  const handleShowModalAction = (id, sectionName) => {
-    setModalActionItem((prev) => ({
+  const handleShowModalAction = (id: number, sectionName: string) => {
+    setModalActionItem((prev: number[]) => ({
       ...prev,
       [id]: !prev[id],
     }));

@@ -4,13 +4,13 @@ import { Banner } from '@/widgets/banner';
 import { Slider } from '@/widgets/sliders';
 import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
 import styles from './styles/TopRatedMovies.module.css';
+import { IMovieData } from './module/interfaces';
 
 const TopRatedMovies = () => {
   const topRatedMovies = useTopRatedMovies();
   const sliderControls = useSectionAutoplay();
   return (
     <>
-      {/* Top Rated Movies */}
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Фильмы топ рейтинга</h2>
         <div className={styles.wrapper}>
@@ -19,7 +19,7 @@ const TopRatedMovies = () => {
               moviesAndShows={topRatedMovies}
               autoplay={sliderControls.topRatedMovies}
             >
-              {(element) => (
+              {(element: IMovieData) => (
                 <Banner
                   key={element.id}
                   mediaType={'movie'}

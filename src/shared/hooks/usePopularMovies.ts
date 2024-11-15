@@ -1,20 +1,35 @@
 import { useEffect, useState } from 'react';
 import { getPopularMovies } from '../api/api';
 
-const usePopularMovies = (page) => {
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+// Типы для фильма
+interface Movie {
+  id: number;
+  title: string;
+  genre_ids: number[];
+}
+
+// Тип для возвращаемого значения хука
+interface UsePopularMoviesReturn {
+  popularMovies: Movie[];
+  isLoading: boolean;
+}
+
+const usePopularMovies = (page: number): UsePopularMoviesReturn => {
+  const [popularMovies, setPopularMovies] = useState<Movie[]>([]); // Типизируем состояние как массив фильмов
+  const [isLoading, setIsLoading] = useState<boolean>(false); // Типизируем состояние как булево значение
 
   useEffect(() => {
     const fetchMovies = async () => {
       setIsLoading(true);
       try {
-        const movies = await getPopularMovies(page);
+        const movies: Movie[] = await getPopularMovies(page); // Типизируем результат API-запроса
 
+        // Фильтруем фильмы
         const filteredMovies = movies.filter(
           (movie) => !movie.genre_ids.includes(16),
         );
 
+        // Обновляем состояние фильмов, исключая дубликаты
         setPopularMovies((prevMovies) => {
           const uniqueMovies = filteredMovies.filter(
             (newMovie) =>

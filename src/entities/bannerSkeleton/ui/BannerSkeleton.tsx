@@ -1,6 +1,14 @@
 import styles from './styles/BannerSkeleton.module.css';
 
-const BannerSkeleton = ({ count = 1, size }) => {
+interface BannerSkeletonProps {
+  count?: number; // Количество скелетонов, опциональный параметр (по умолчанию 1)
+  size?: 'big' | 'small'; // Размер баннера, может быть только 'big' или 'small'
+}
+
+const BannerSkeleton: React.FC<BannerSkeletonProps> = ({
+  count = 1,
+  size,
+}) => {
   return (
     <>
       {Array.from({ length: count }).map((_, index) => (

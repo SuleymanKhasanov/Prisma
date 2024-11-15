@@ -4,9 +4,10 @@ import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import usePopularMovies from '@/shared/hooks/usePopularMovies';
 import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
 import styles from './styles/PopularMovies.module.css';
+import { IMovieData } from './module/interfaces';
 
-const PopularMovies = () => {
-  const popularMovies = usePopularMovies();
+const PopularMovies = (page = 1) => {
+  const popularMovies = usePopularMovies((page = 1));
   const sliderControls = useSectionAutoplay();
 
   return (
@@ -19,13 +20,13 @@ const PopularMovies = () => {
               moviesAndShows={popularMovies.popularMovies}
               autoplay={sliderControls.popularMovies}
             >
-              {(element) => (
+              {(element: IMovieData) => (
                 <Banner
                   key={element.id}
                   mediaType={'movie'}
                   title={element.title || element.name}
                   rating={element.vote_average}
-                  poster={element.backdrop_path}
+                  poster={element.poster_path}
                   genere={element.genre_ids}
                   id={element.id}
                   sectionName="popularMovies"
@@ -34,7 +35,7 @@ const PopularMovies = () => {
               )}
             </Slider>
           ) : (
-            <BannerSkeleton count={4} size={'small'} />
+            <BannerSkeleton count={4} size={'big'} />
           )}
         </div>
       </div>

@@ -6,8 +6,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filter } from '../utils/slice/slice';
 
-const GenreFilter = ({ genereType }) => {
-  const genreClass = (id) => {
+// Типизация пропсов компонента
+interface GenreFilterProps {
+  genereType: 'movie' | 'series'; // Тип жанра (фильмы или сериалы)
+}
+
+const GenreFilter: React.FC<GenreFilterProps> = ({ genereType }) => {
+  const genreClass = (id: number): string => {
     switch (id) {
       case 28:
         return styles.action; // Боевик
@@ -68,28 +73,32 @@ const GenreFilter = ({ genereType }) => {
     }
   };
 
-  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [selectedGenre, setSelectedGenre] = useState<number | null>(
+    null,
+  );
 
-  const [filterMediaType, setFilterMediaType] = useState();
+  const [filterMediaType, setFilterMediaType] = useState<
+    typeof moviesGeners | typeof seriesGenere | null
+  >(null);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (genereType === 'series') {
       setFilterMediaType(seriesGenere);
-    }
-    if (genereType === 'movie') {
+    } else if (genereType === 'movie') {
       setFilterMediaType(moviesGeners);
     }
   }, [genereType]);
 
-  const dispatch = useDispatch();
-
-  const handleOnClick = (id) => {
-    setSelectedGenre(selectedGenre === id ? null : id);
+  const handleOnClick = (id: number | null) => {
+    setSelectedGenre((prevSelectedGenre) =>
+      prevSelectedGenre === id ? null : id,
+    );
     if (id) {
-      dispatch(filter(id));
-    }
-    if (!id) {
-      dispatch(filter([]));
+      dispatch(filter([id])); // Отправляем выбранный жанр в Redux
+    } else {
+      dispatch(filter([])); // Сброс фильтра
     }
   };
 
@@ -107,7 +116,7 @@ const GenreFilter = ({ genereType }) => {
           />
         </li>
         {filterMediaType?.genres
-          .filter((element) => element.id !== 16)
+          .filter((element) => element.id !== 16) // Фильтруем жанр с id 16
           .map((element) => (
             <li
               key={element.id}

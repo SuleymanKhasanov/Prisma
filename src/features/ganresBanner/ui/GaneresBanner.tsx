@@ -1,7 +1,15 @@
 import styles from './styles/Generes.module.css';
 
-const GaneresBanner = ({ title, id }) => {
-  const genreClass = (id) => {
+interface GaneresBannerProps {
+  title: string; // Название жанра
+  id: number; // ID жанра
+}
+
+const GaneresBanner: React.FC<GaneresBannerProps> = ({
+  title,
+  id,
+}) => {
+  const genreClass = (id: number): string => {
     switch (id) {
       case 28:
         return styles.action; // Боевик
