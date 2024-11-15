@@ -5,6 +5,7 @@ import { Banner } from '@/widgets/banner';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import styles from './styles/WeekTrends.module.css';
 import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
+import { IMovieData } from './module/interfaces';
 
 const WeekTrends = () => {
   const weekTrends = useWeekTrending();
@@ -19,7 +20,7 @@ const WeekTrends = () => {
               moviesAndShows={weekTrends}
               autoplay={sliderControls.weekTrends}
             >
-              {(element) => (
+              {(element: IMovieData) => (
                 <Banner
                   key={element.id}
                   mediaType={element.media_type}

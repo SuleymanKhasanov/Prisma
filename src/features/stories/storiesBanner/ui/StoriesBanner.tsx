@@ -1,17 +1,37 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { showStories } from '../utils/slice';
 import styles from './styles/StoriesBanner.module.css';
 
-const StoriesBanner = ({ image, title, id, movieKey }) => {
-  const dispatch = useDispatch();
-  const [selectedId, setSelectedId] = useState(null);
+interface StoriesBannerProps {
+  image: string;
+  title: string;
+  id: number;
+  movieKey: string;
+}
 
-  const handlerToGetStories = (id, title, movieKey) => {
-    const storiesId = { id, movieKey, title };
-    dispatch(showStories(storiesId));
-    setSelectedId(id);
-  };
+const StoriesBanner: React.FC<StoriesBannerProps> = ({
+  image,
+  title,
+  id,
+  movieKey,
+}) => {
+  const dispatch = useDispatch();
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  // Используем useCallback, чтобы избежать лишних пересозданий функции
+  const handlerToGetStories = useCallback(
+    (id: number, title: string, movieKey: string) => {
+      const storiesId = { id, movieKey, title };
+      dispatch(showStories(storiesId));
+      setSelectedId(id);
+    },
+    [dispatch],
+  );
+
+  // Условие для обрезки названия фильма
+  const truncatedTitle =
+    title.length > 10 ? `${title.substring(0, 6)}...` : title;
 
   return (
     <div
@@ -20,7 +40,7 @@ const StoriesBanner = ({ image, title, id, movieKey }) => {
     >
       <div
         className={
-          selectedId === id ? styles.wraperNotActive : styles.wrapper
+          selectedId === id ? styles.wrapperNotActive : styles.wrapper
         }
       >
         <img
@@ -29,11 +49,7 @@ const StoriesBanner = ({ image, title, id, movieKey }) => {
           className={styles.storiesImg}
         />
       </div>
-      <p className="title">
-        {title.length > 10
-          ? title.substring(0, 10 - 3) + '...'
-          : title}
-      </p>
+      <p className="title">{truncatedTitle}</p>
     </div>
   );
 };

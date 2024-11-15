@@ -2,16 +2,27 @@ import { useState, useEffect } from 'react';
 import { getSeriesByGenre } from '@/shared/api/api';
 import { useSelector } from 'react-redux';
 
+// Типизация сериала
+interface Serie {
+  id: number;
+  genre_ids: number[];
+  // Добавьте остальные поля сериала, если они вам нужны
+}
+
 const useFilterSeriesByGenre = () => {
-  const genreId = useSelector((state) => state.filter);
-  const [page, setPage] = useState(1);
-  const [series, setSeries] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const genreId = useSelector(
+    (state: { filter: number | null }) => state.filter,
+  );
+  const [page, setPage] = useState<number>(1);
+  const [series, setSeries] = useState<Serie[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchSeries = async () => {
       if (!genreId) return;
+
       setIsLoading(true);
+
       try {
         const fetchedSeries = await getSeriesByGenre(genreId, page);
 
@@ -20,6 +31,7 @@ const useFilterSeriesByGenre = () => {
           (serie) => !serie.genre_ids.includes(16),
         );
 
+        // Обновляем состояние списка сериалов, исключая дубли
         setSeries((prevSeries) => {
           const uniqueSeries = filteredSeries.filter(
             (newSerie) =>
@@ -38,8 +50,9 @@ const useFilterSeriesByGenre = () => {
   }, [genreId, page]);
 
   useEffect(() => {
-    setPage(1);
+    // Сбросить сериалы и страницу при изменении жанра
     setSeries([]);
+    setPage(1);
   }, [genreId]);
 
   return { series, isLoading, setPage };

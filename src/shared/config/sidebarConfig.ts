@@ -9,7 +9,16 @@ import anime from '@/shared/icons/anime.svg';
 import folder from '@/shared/icons/folder.svg';
 import close from '@/shared/icons/close.svg';
 
-const sidebarConfig = [
+interface ISidebarConfig {
+  id: string;
+  to?: string;
+  icon: string;
+  text: string;
+  isLink: boolean;
+  close?: string;
+}
+
+const sidebarConfig: ISidebarConfig[] = [
   {
     id: 'logo',
     to: '/',
