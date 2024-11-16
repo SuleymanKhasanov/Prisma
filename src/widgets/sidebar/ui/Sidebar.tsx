@@ -3,8 +3,18 @@ import { NavLink } from 'react-router-dom';
 import sidebarConfig from '@/shared/config/sidebarConfig';
 import styles from './styles/Sidebar.module.css';
 
+// Тип для элементов в конфигурации sidebarConfig
+interface SidebarItem {
+  id: string;
+  text: string;
+  icon: string;
+  close?: string; // Путь к изображению для закрытия (не обязательно)
+  to?: string; // URL для NavLink (не обязательно)
+  isLink: boolean; // Если true, то элемент является ссылкой, если нет, то меню
+}
+
 const Sidebar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
   const handleShowSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -17,15 +27,15 @@ const Sidebar = () => {
     >
       <nav className={styles.sidebarNavigation}>
         <ul className={styles.sidebarList}>
-          {sidebarConfig.map((item) => (
+          {sidebarConfig.map((item: SidebarItem) => (
             <li
               key={item.id}
               className={styles.sidebarItem}
-              onClick={item.isLink ? null : handleShowSidebar}
+              onClick={item.isLink ? undefined : handleShowSidebar}
             >
               {item.isLink ? (
                 <NavLink
-                  to={item.to}
+                  to={item.to || '#'}
                   style={({ isActive }) => ({
                     background: isActive ? '#113635' : 'inherit',
                   })}

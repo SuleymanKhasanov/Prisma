@@ -7,7 +7,7 @@ interface StoriesBannerProps {
   image: string;
   title: string;
   id: number;
-  movieKey: string;
+  movieKey: string | undefined;
 }
 
 const StoriesBanner: React.FC<StoriesBannerProps> = ({
@@ -21,7 +21,7 @@ const StoriesBanner: React.FC<StoriesBannerProps> = ({
 
   // Используем useCallback, чтобы избежать лишних пересозданий функции
   const handlerToGetStories = useCallback(
-    (id: number, title: string, movieKey: string) => {
+    (id: number, title: string, movieKey: string | undefined) => {
       const storiesId = { id, movieKey, title };
       dispatch(showStories(storiesId));
       setSelectedId(id);
@@ -40,7 +40,9 @@ const StoriesBanner: React.FC<StoriesBannerProps> = ({
     >
       <div
         className={
-          selectedId === id ? styles.wrapperNotActive : styles.wrapper
+          selectedId === id
+            ? `${styles.wrapperNotActive}`
+            : `${styles.wrapper}`
         }
       >
         <img

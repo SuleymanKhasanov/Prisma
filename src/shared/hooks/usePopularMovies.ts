@@ -6,6 +6,11 @@ interface Movie {
   id: number;
   title: string;
   genre_ids: number[];
+  name?: string;
+  vote_average?: number;
+  poster_path?: string;
+  release_date?: string;
+  media_type?: string;
 }
 
 // Тип для возвращаемого значения хука

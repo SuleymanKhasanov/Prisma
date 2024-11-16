@@ -9,10 +9,13 @@ interface Movie {
   // добавьте остальные поля фильма, если они вам нужны
 }
 
+// Типизация состояния Redux (можно заменить на ваш конкретный тип)
+interface RootState {
+  filter: number | null;
+}
+
 const useFilterMoviesByGenre = () => {
-  const genreId = useSelector(
-    (state: { filter: number | null }) => state.filter,
-  );
+  const genreId = useSelector((state: RootState) => state.filter);
   const [page, setPage] = useState<number>(1);
   const [movies, setMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -24,18 +27,24 @@ const useFilterMoviesByGenre = () => {
       setIsLoading(true);
 
       try {
-        const fetchedMovies = await getMoviesByGenre(genreId, page);
-
-        // Фильтрация фильмов и исключение жанра с id 16
-        const filteredMovies = fetchedMovies.filter(
-          (movie) => !movie.genre_ids.includes(16),
+        // Явная типизация результата API
+        const fetchedMovies: Movie[] = await getMoviesByGenre(
+          genreId,
+          page,
         );
 
-        // Обновление списка фильмов, чтобы избежать дублирования
+        // Фильтрация фильмов, исключая жанр с id 16
+        const filteredMovies = fetchedMovies.filter(
+          (movie: Movie) => !movie.genre_ids.includes(16), // Типизация переменной movie
+        );
+
+        // Обновление состояния с уникальными фильмами
         setMovies((prevMovies) => {
           const uniqueMovies = filteredMovies.filter(
-            (newMovie) =>
-              !prevMovies.some((movie) => movie.id === newMovie.id),
+            (newMovie: Movie) =>
+              !prevMovies.some(
+                (movie: Movie) => movie.id === newMovie.id,
+              ),
           );
           return [...prevMovies, ...uniqueMovies];
         });

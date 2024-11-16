@@ -6,5 +6,5 @@ export interface IMovieData {
   poster_path: string;
   genre_ids: number[];
   release_date: string;
-  media_type: string;
+  media_type?: string;
 }

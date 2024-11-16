@@ -1,4 +1,3 @@
-import React from 'react';
 import useWeekTrending from '@/shared/hooks/useWeekTrends';
 import { Slider } from '@/widgets/sliders';
 import { Banner } from '@/widgets/banner';
@@ -10,20 +9,34 @@ import { IMovieData } from './module/interfaces';
 const WeekTrends = () => {
   const weekTrends = useWeekTrending();
   const sliderControls = useSectionAutoplay();
+
+  const transformedMovies = weekTrends.map((movie) => ({
+    id: movie.id,
+    title: movie.title || '',
+    name: movie.name || '',
+    vote_average: movie.vote_average || 0,
+    poster_path: movie.poster_path || '',
+    genre_ids: movie.genre_ids || [],
+    release_date: movie.release_date || '',
+    media_type: movie.media_type || '',
+  }));
+
+  console.log(transformedMovies);
+
   return (
     <>
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Тренды недели</h2>
         <div className={styles.wrapper}>
-          {weekTrends?.length > 0 ? (
+          {transformedMovies?.length > 0 ? (
             <Slider
-              moviesAndShows={weekTrends}
+              moviesAndShows={transformedMovies}
               autoplay={sliderControls.weekTrends}
             >
               {(element: IMovieData) => (
                 <Banner
                   key={element.id}
-                  mediaType={element.media_type}
+                  mediaType={element.media_type || 'movie'}
                   title={element.title || element.name}
                   rating={element.vote_average}
                   poster={element.poster_path}

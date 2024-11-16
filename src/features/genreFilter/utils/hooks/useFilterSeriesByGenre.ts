@@ -9,10 +9,12 @@ interface Serie {
   // Добавьте остальные поля сериала, если они вам нужны
 }
 
+interface RootState {
+  filter: number | null;
+}
+
 const useFilterSeriesByGenre = () => {
-  const genreId = useSelector(
-    (state: { filter: number | null }) => state.filter,
-  );
+  const genreId = useSelector((state: RootState) => state.filter);
   const [page, setPage] = useState<number>(1);
   const [series, setSeries] = useState<Serie[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -24,18 +26,24 @@ const useFilterSeriesByGenre = () => {
       setIsLoading(true);
 
       try {
-        const fetchedSeries = await getSeriesByGenre(genreId, page);
+        // Типизируем результат запроса как массив Serie
+        const fetchedSeries: Serie[] = await getSeriesByGenre(
+          genreId,
+          page,
+        );
 
         // Фильтруем сериалы, исключая те, у которых genre_id 16
         const filteredSeries = fetchedSeries.filter(
-          (serie) => !serie.genre_ids.includes(16),
+          (serie: Serie) => !serie.genre_ids.includes(16), // Явная типизация для переменной serie
         );
 
         // Обновляем состояние списка сериалов, исключая дубли
-        setSeries((prevSeries) => {
+        setSeries((prevSeries: Serie[]) => {
           const uniqueSeries = filteredSeries.filter(
-            (newSerie) =>
-              !prevSeries.some((serie) => serie.id === newSerie.id),
+            (newSerie: Serie) =>
+              !prevSeries.some(
+                (serie: Serie) => serie.id === newSerie.id,
+              ), // Явная типизация для переменной serie и newSerie
           );
           return [...prevSeries, ...uniqueSeries];
         });

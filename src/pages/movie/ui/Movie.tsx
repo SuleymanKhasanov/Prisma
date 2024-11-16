@@ -14,6 +14,7 @@ const Movie = () => {
     movieContainerRef,
     setPage: setPopularPage,
   } = useLoadMovies();
+
   const {
     movies: moviesByGenre,
     isLoading: isFilteredLoading,

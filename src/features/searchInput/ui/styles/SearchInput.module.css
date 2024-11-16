@@ -1,0 +1,55 @@
+.searchBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.8) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  width: 100%;
+  display: flex; /* Используем flexbox */
+  justify-content: center; /* Центрируем по горизонтали */
+  align-items: center; /* Центрируем по вертикали */
+}
+
+.searchForm {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative; /* Для дальнейшего смещения */
+  bottom: 20px;
+}
+
+.searchInput {
+  padding: 15px 20px;
+  width: 250px;
+  background-color: #1e1e1e;
+  border-radius: 20px;
+  border: 1px solid #333;
+  outline: none;
+  color: inherit;
+  font-size: 16px;
+  margin-left: 60px; /* Смещение влево */
+}
+
+.searchBtn {
+  background: linear-gradient(135deg, #0d9a8c, #062763, #441ead);
+  border: none;
+  border-radius: 20px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.searchBtn:active {
+  transform: scale(0.9);
+}
+
+@media screen and (min-width: 768px) {
+  .searchInput {
+    width: 500px;
+  }
+}

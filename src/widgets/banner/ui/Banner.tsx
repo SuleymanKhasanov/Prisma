@@ -4,9 +4,12 @@ import { Raiting } from '@/entities/raiting';
 import { ActionButton, ActionItem } from '@/features/action';
 import styles from './styles/Banner.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { sliderAutoplay } from '@/widgets/sliders/utils/slice';
-import { sliderStop } from '@/widgets/sliders/utils/slice';
+import {
+  sliderAutoplay,
+  sliderStop,
+} from '@/widgets/sliders/utils/slice';
 
+// Тип для пропсов Banner
 interface BannerType {
   mediaType: string;
   title?: string;
@@ -17,6 +20,11 @@ interface BannerType {
   id: number;
   sectionName: string;
   date: string;
+}
+
+// Тип для состояния modalActionItem
+interface ModalActionItem {
+  [key: number]: boolean;
 }
 
 const Banner: React.FC<BannerType> = ({
@@ -30,12 +38,13 @@ const Banner: React.FC<BannerType> = ({
   sectionName,
   date,
 }) => {
-  const [modalActionItem, setModalActionItem] = useState({});
-  const autoplay = useSelector((state) => state.slider.autoplay);
+  const [modalActionItem, setModalActionItem] =
+    useState<ModalActionItem>({});
+  const autoplay = useSelector((state: any) => state.slider.autoplay); // Типизация состояния, замените any на тип вашего состояния
   const dispatch = useDispatch();
 
   const handleShowModalAction = (id: number, sectionName: string) => {
-    setModalActionItem((prev: number[]) => ({
+    setModalActionItem((prev: ModalActionItem) => ({
       ...prev,
       [id]: !prev[id],
     }));
@@ -56,7 +65,7 @@ const Banner: React.FC<BannerType> = ({
     }
   };
 
-  const releseDate = date?.split('-')[0];
+  const releaseDate = date?.split('-')[0];
 
   return (
     <div className={styles.banner}>
@@ -66,7 +75,7 @@ const Banner: React.FC<BannerType> = ({
           poster={`https://image.tmdb.org/t/p/w500/${poster}`}
           mediaType={mediaType}
           genere={genere}
-          date={releseDate}
+          date={releaseDate}
         />
       </div>
       <div className={styles.bannerAction}>
