@@ -119,3 +119,19 @@ export const getSeriesByGenre = async (genreId: number, page = 1) => {
     throw error;
   }
 };
+
+export const getSearchMovieByTitle = async (query: string) => {
+  try {
+    const response = await axios.get(`${BASE_URL}search/multi`, {
+      params: {
+        api_key: API_KEY,
+        language: 'ru-RU',
+        query,
+      },
+    });
+
+    return response.data.results;
+  } catch (error) {
+    throw error;
+  }
+};

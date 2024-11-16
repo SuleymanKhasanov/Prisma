@@ -5,7 +5,12 @@ import { getWeekTranding } from '../api/api';
 interface Trending {
   id: number;
   title: string;
-  media_type: string; // Например, может быть 'movie' или 'tv'
+  genre_ids: number[];
+  name?: string;
+  vote_average?: number;
+  poster_path?: string;
+  release_date?: string;
+  media_type?: string; // Например, может быть 'movie' или 'tv'
   // Можно добавить другие поля, которые возвращаются из API (например, `poster_path`, `release_date`, и т.д.)
 }
 

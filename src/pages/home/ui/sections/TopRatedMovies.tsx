@@ -9,14 +9,24 @@ import { IMovieData } from './module/interfaces';
 const TopRatedMovies = () => {
   const topRatedMovies = useTopRatedMovies();
   const sliderControls = useSectionAutoplay();
+
+  const transformedMovies = topRatedMovies.map((movie) => ({
+    id: movie.id,
+    title: movie.title || '',
+    vote_average: movie.vote_average || 0,
+    poster_path: movie.poster_path || '',
+    genre_ids: movie.genre_ids || [],
+    release_date: movie.release_date || '',
+  }));
+
   return (
     <>
       <div className={styles.weekTrends}>
         <h2 className={styles.sectionTitle}>Фильмы топ рейтинга</h2>
         <div className={styles.wrapper}>
-          {topRatedMovies?.length > 0 ? (
+          {transformedMovies?.length > 0 ? (
             <Slider
-              moviesAndShows={topRatedMovies}
+              moviesAndShows={transformedMovies}
               autoplay={sliderControls.topRatedMovies}
             >
               {(element: IMovieData) => (

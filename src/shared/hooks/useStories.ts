@@ -6,43 +6,64 @@ interface Movie {
   id: number;
   title: string;
   genre_ids: number[];
-  // Дополнительные поля фильма, если нужно
+  backdrop_path: string;
 }
 
 // Тип для трейлера
 interface Trailer {
-  url: string; // Примерное поле, может быть изменено в зависимости от структуры ответа от API
-  // Дополнительные поля трейлера
+  key: string; // Пример: уникальный идентификатор трейлера
+  name: string; // Пример: название трейлера
 }
 
-// Тип для трейлера фильма
+// Тип для трейлеров фильма
 interface MovieTrailer {
   movieId: number;
-  trailer: Trailer | null; // В случае, если трейлер не найден
+  trailer: Trailer | null; // Трейлер может быть null
 }
 
 // Тип для возвращаемого значения хука
 interface UseStoriesReturn {
   popularMovies: Movie[];
-  movieTrailers: MovieTrailer[];
+  movieTrailers: {
+    movieId: number;
+    trailer: ITrailersData[] | null; // Преобразуем трейлер в правильный формат
+  }[];
+}
+
+// Пример получения данных для ITrailersData
+interface ITrailersData {
+  id: string;
+  key: string;
+  name: string;
 }
 
 const useStories = (): UseStoriesReturn => {
-  const [popularMovies, setPopularMovies] = useState<Movie[]>([]); // Типизируем состояние как массив фильмов
-  const [movieTrailers, setMovieTrailers] = useState<MovieTrailer[]>(
-    [],
-  ); // Типизируем состояние как массив трейлеров
+  const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
+  const [movieTrailers, setMovieTrailers] = useState<
+    { movieId: number; trailer: ITrailersData[] | null }[]
+  >([]);
 
   useEffect(() => {
     const fetchMoviesAndTrailers = async () => {
       try {
-        const movies = await getPopularMovies(); // Типизируем результат как массив Movie
+        const movies = await getPopularMovies();
         setPopularMovies(movies);
 
         const trailers = await Promise.all(
-          movies.map(async (movie) => {
-            const trailer = await getMovieTrailerInfo(movie.id); // Типизируем результат как Trailer или null
-            return { movieId: movie.id, trailer };
+          movies.map(async (movie: Movie) => {
+            const trailer = await getMovieTrailerInfo(movie.id);
+
+            // Преобразование Trailer | null в ITrailersData[] | null
+            const formattedTrailer =
+              trailer && Array.isArray(trailer)
+                ? trailer.map((t: Trailer) => ({
+                    id: `${movie.id}-${t.key}`, // Генерируем уникальный id
+                    key: t.key,
+                    name: t.name,
+                  }))
+                : null;
+
+            return { movieId: movie.id, trailer: formattedTrailer };
           }),
         );
 

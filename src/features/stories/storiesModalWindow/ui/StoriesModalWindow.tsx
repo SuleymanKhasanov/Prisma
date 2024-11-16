@@ -4,9 +4,25 @@ import styles from './styles/StoriesModalWindow.module.css';
 import { useEffect, useState } from 'react';
 import close from '@/shared/icons/close.svg';
 
+// Типизация состояния Redux
+interface Story {
+  movieKey: string;
+  // другие поля story, если они есть
+}
+
+interface RootState {
+  stories: StoriesState;
+}
+
+interface StoriesState {
+  currentStory: Story | null;
+}
+
 const StoriesModalWindow = () => {
   const dispatch = useDispatch();
-  const story = useSelector((state) => state.stories.currentStory);
+  const story = useSelector(
+    (state: RootState) => state.stories.currentStory,
+  );
 
   const [hideFrame, setHideFrame] = useState(false);
 

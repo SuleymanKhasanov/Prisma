@@ -3,8 +3,28 @@ import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import { useEffect, useRef } from 'react';
 
-const Slider = ({ moviesAndShows, children, autoplay }) => {
-  const swiperRef = useRef(null);
+interface IMovieData {
+  id: number;
+  title?: string;
+  name?: string;
+  vote_average: number;
+  poster_path: string;
+  genre_ids: number[];
+  release_date: string;
+  media_type?: string;
+}
+interface SliderProps {
+  moviesAndShows: IMovieData[]; // Используем IMovieData вместо IMovieOrShow
+  children: (element: IMovieData) => React.ReactNode; // Обновляем тип для children
+  autoplay: boolean;
+}
+
+const Slider: React.FC<SliderProps> = ({
+  moviesAndShows,
+  children,
+  autoplay,
+}) => {
+  const swiperRef = useRef<any>(null);
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -15,6 +35,7 @@ const Slider = ({ moviesAndShows, children, autoplay }) => {
       }
     }
   }, [autoplay]);
+
   return (
     <Swiper
       modules={[Autoplay]}
