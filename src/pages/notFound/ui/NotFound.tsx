@@ -2,11 +2,13 @@ import React, { useRef, useEffect } from 'react';
 import styles from './styles/NotFound.module.css';
 
 const NotFound = () => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null); // Типизация canvasRef
 
   const screenWidth = 400;
   const screenHeight = 300;
-  const drawNoise = (ctx) => {
+
+  const drawNoise = (ctx: CanvasRenderingContext2D) => {
+    // Типизация ctx
     const imageData = ctx.createImageData(screenWidth, screenHeight);
     for (let i = 0; i < imageData.data.length; i += 4) {
       const color = Math.random() > 0.5 ? 255 : 0;
@@ -20,9 +22,13 @@ const NotFound = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    const intervalId = setInterval(() => drawNoise(ctx), 50);
-    return () => clearInterval(intervalId);
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        const intervalId = setInterval(() => drawNoise(ctx), 50);
+        return () => clearInterval(intervalId);
+      }
+    }
   }, []);
 
   return (
@@ -35,7 +41,7 @@ const NotFound = () => {
       ></canvas>
       <div className={styles.notFoundTextBox}>
         <h2 className={styles.notFoundTitle}>404</h2>
-        <p className={styles.notFoundText}>cтраница не найдена</p>
+        <p className={styles.notFoundText}>страница не найдена</p>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useLoadMovies from '../utils/hooks/useLoadMovies';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import { GenreFilter } from '@/features/genreFilter';
@@ -7,7 +7,17 @@ import PopularMovies from './sections/PopularMovies';
 import styles from './styles/Movie.module.css';
 import useFilterMoviesByGenre from '@/features/genreFilter/utils/hooks/useFilterMoviesByGenre';
 
-const Movie = () => {
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+  genre_ids: number[];
+  vote_average: number;
+  release_date: string;
+}
+
+const Movie: React.FC = () => {
+  // Используем хук для загрузки популярных фильмов
   const {
     popularMovies,
     isLoading: isPopularLoading,
@@ -15,19 +25,24 @@ const Movie = () => {
     setPage: setPopularPage,
   } = useLoadMovies();
 
+  // Используем хук для фильтрации фильмов по жанрам
   const {
     movies: moviesByGenre,
     isLoading: isFilteredLoading,
     setPage: setGenrePage,
   } = useFilterMoviesByGenre();
-  const [isGenreSelected, setIsGenreSelected] = useState(false);
 
+  const [isGenreSelected, setIsGenreSelected] =
+    useState<boolean>(false);
+
+  // Эффект для отслеживания изменения фильтров
   useEffect(() => {
     setIsGenreSelected(moviesByGenre.length > 0);
   }, [moviesByGenre]);
 
-  const handleScroll = (e) => {
-    const target = e.target;
+  // Обработчик прокрутки для загрузки следующей страницы
+  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+    const target = e.target as HTMLElement;
     if (
       target.scrollHeight - target.scrollTop <=
       target.clientHeight + 500
@@ -38,6 +53,7 @@ const Movie = () => {
     }
   };
 
+  // Используем эффект для добавления обработчика прокрутки
   useEffect(() => {
     const container = movieContainerRef.current;
     container?.addEventListener('scroll', handleScroll);

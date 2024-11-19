@@ -5,7 +5,6 @@ import usePopularMovies from '@/shared/hooks/usePopularMovies';
 interface Movie {
   id: number;
   title: string;
-  // добавьте другие поля, которые есть у фильма
 }
 
 const useLoadMovies = () => {

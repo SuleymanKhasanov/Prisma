@@ -28,7 +28,8 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div className={styles.card}>
-      {poster === 'https://image.tmdb.org/t/p/w500/null' ? (
+      {poster === 'https://image.tmdb.org/t/p/w500/undefined' ||
+      poster === 'https://image.tmdb.org/t/p/w500/null' ? (
         <Follback />
       ) : (
         <img
