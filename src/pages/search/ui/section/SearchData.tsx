@@ -14,7 +14,7 @@ const SearchData = ({ searchData }: { searchData: any[] }) => {
             return (
               <Banner
                 key={element.id}
-                mediaType="movie"
+                mediaType={element.media_type}
                 title={element.title || element.name}
                 rating={element.vote_average}
                 poster={element.poster_path}

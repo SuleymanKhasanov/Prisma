@@ -35,7 +35,7 @@ const SearchInput: React.FC = () => {
       <form onSubmit={handleToSubmit} className={styles.searchForm}>
         <input
           type="text"
-          placeholder="Поиск по названию фильма"
+          placeholder="Поиск по названию"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           className={styles.searchInput}

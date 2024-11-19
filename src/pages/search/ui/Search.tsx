@@ -4,15 +4,30 @@ import SearchData from './section/SearchData';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+  genre_ids: number[];
+  vote_average: number;
+  release_date: string;
+}
+
 const Search = () => {
-  const [searchData, setSearchData] = useState([]);
-  const findMovies = useSelector((state) => state.search);
+  // Явно указываем тип состояния searchData как Movie[]
+  const [searchData, setSearchData] = useState<Movie[]>([]);
+
+  const findMovies = useSelector(
+    (state: { search: Movie[] }) => state.search,
+  );
 
   useEffect(() => {
     if (findMovies.length > 0) {
       setSearchData(findMovies);
     }
   }, [findMovies]);
+
+  console.log(findMovies);
 
   return (
     <div>

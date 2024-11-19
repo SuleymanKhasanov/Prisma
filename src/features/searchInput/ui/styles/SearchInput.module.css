@@ -24,7 +24,7 @@
 }
 
 .searchInput {
-  padding: 15px 20px;
+  padding: 15px 30px;
   width: 250px;
   background-color: #1e1e1e;
   border-radius: 20px;
@@ -36,7 +36,7 @@
 }
 
 .searchBtn {
-  background: linear-gradient(135deg, #0d9a8c, #062763, #441ead);
+  background: linear-gradient(135deg, #128432, #085f7c, #074fba);
   border: none;
   border-radius: 20px;
   padding: 8px;
@@ -45,7 +45,7 @@
 }
 
 .searchBtn:active {
-  transform: scale(0.9);
+  transform: scale(0.8);
 }
 
 @media screen and (min-width: 768px) {

@@ -21,8 +21,6 @@ const WeekTrends = () => {
     media_type: movie.media_type || '',
   }));
 
-  console.log(transformedMovies);
-
   return (
     <>
       <div className={styles.weekTrends}>
