@@ -19,7 +19,7 @@ interface RootState {
   filter: number | null;
 }
 
-const useFilterMoviesByGenre = () => {
+const useFilterCartoonsByGenre = () => {
   const genreId = useSelector((state: RootState) => state.filter);
   const [page, setPage] = useState<number>(1);
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -39,8 +39,8 @@ const useFilterMoviesByGenre = () => {
         );
 
         // Фильтрация фильмов, исключая жанр с id 16
-        const filteredMovies = fetchedMovies.filter(
-          (movie: Movie) => !movie.genre_ids.includes(16),
+        const filteredMovies = fetchedMovies.filter((movie: Movie) =>
+          movie.genre_ids.includes(16),
         );
 
         // Обновление состояния с уникальными фильмами
@@ -72,4 +72,4 @@ const useFilterMoviesByGenre = () => {
   return { movies, isLoading, setPage };
 };
 
-export default useFilterMoviesByGenre;
+export default useFilterCartoonsByGenre;

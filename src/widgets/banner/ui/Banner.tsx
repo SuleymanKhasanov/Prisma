@@ -40,7 +40,7 @@ const Banner: React.FC<BannerType> = ({
 }) => {
   const [modalActionItem, setModalActionItem] =
     useState<ModalActionItem>({});
-  const autoplay = useSelector((state: any) => state.slider.autoplay); // Типизация состояния, замените any на тип вашего состояния
+  const autoplay = useSelector((state: any) => state.slider.autoplay);
   const dispatch = useDispatch();
 
   const handleShowModalAction = (id: number, sectionName: string) => {
