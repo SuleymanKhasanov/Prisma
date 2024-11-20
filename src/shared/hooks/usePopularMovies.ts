@@ -4,13 +4,13 @@ import { getPopularMovies } from '../api/api';
 // Типы для фильма
 interface Movie {
   id: number;
-  title: string;
-  genre_ids: number[];
+  title?: string;
   name?: string;
-  vote_average?: number;
-  poster_path?: string;
-  release_date?: string;
-  media_type?: string;
+  vote_average: number;
+  poster_path: string;
+  genre_ids: number[];
+  release_date: string;
+  media_type: string;
 }
 
 // Тип для возвращаемого значения хука

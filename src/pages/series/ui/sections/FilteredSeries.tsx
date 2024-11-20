@@ -1,8 +1,24 @@
-import React from 'react';
 import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
 import { Banner } from '@/widgets/banner';
 
-const FilteredSeries = ({ filteredMovies }) => {
+interface IFilteredMovies {
+  id: number;
+  title?: string;
+  name?: string;
+  vote_average: number;
+  poster_path: string;
+  genre_ids: number[];
+  release_date: string;
+  media_type: string;
+}
+
+interface IFilteredMoviesProps {
+  filteredMovies: IFilteredMovies[]; // Массив фильмов
+}
+
+const FilteredSeries: React.FC<IFilteredMoviesProps> = ({
+  filteredMovies,
+}) => {
   return (
     <>
       {filteredMovies.length > 0 ? (

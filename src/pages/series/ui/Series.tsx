@@ -7,29 +7,39 @@ import useFilterSeriesByGenre from '@/features/genreFilter/utils/hooks/useFilter
 import FilteredSeries from './sections/FilteredSeries';
 import PopularSeries from './sections/PopularSeries';
 
-const Series = () => {
+interface Movie {
+  id: number;
+  title?: string;
+  name?: string;
+  vote_average: number;
+  poster_path: string;
+  genre_ids: number[];
+  release_date: string;
+  media_type: string;
+}
+
+const Series: React.FC = () => {
   const {
     popularShows,
     isLoading: isPopularLoading,
     movieContainerRef,
-    setPage: setPopularPage,
   } = useLoadMovies();
+
   const {
     series: moviesByGenre = [],
     isLoading: isFilteredLoading,
     setPage: setGenrePage,
   } = useFilterSeriesByGenre();
 
-  const [isGenreSelected, setIsGenreSelected] = useState(false);
+  const [isGenreSelected, setIsGenreSelected] =
+    useState<boolean>(false);
 
   useEffect(() => {
-    if (moviesByGenre && Array.isArray(moviesByGenre)) {
-      setIsGenreSelected(moviesByGenre.length > 0);
-    }
+    setIsGenreSelected(moviesByGenre.length > 0);
   }, [moviesByGenre]);
 
-  const handleScroll = (e) => {
-    const target = e.target;
+  const handleScroll = (e: Event) => {
+    const target = e.target as HTMLElement; // Приведение к HTMLElement
     if (
       target.scrollHeight - target.scrollTop <=
       target.clientHeight + 500
@@ -42,11 +52,9 @@ const Series = () => {
 
   useEffect(() => {
     const container = movieContainerRef.current;
-    if (container) {
-      container.addEventListener('scroll', handleScroll);
-      return () =>
-        container.removeEventListener('scroll', handleScroll);
-    }
+    container?.addEventListener('scroll', handleScroll);
+    return () =>
+      container?.removeEventListener('scroll', handleScroll);
   }, [isGenreSelected]);
 
   return (
@@ -62,10 +70,7 @@ const Series = () => {
         {isGenreSelected ? (
           <FilteredSeries filteredMovies={moviesByGenre} />
         ) : (
-          <PopularSeries
-            popularMovies={popularShows}
-            mediaType={'tv'}
-          />
+          <PopularSeries popularMovies={popularShows} />
         )}
 
         {(isPopularLoading || isFilteredLoading) && (

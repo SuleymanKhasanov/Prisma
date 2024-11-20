@@ -1,12 +1,24 @@
 import { useEffect, useRef, useState } from 'react';
 import usePopularShows from '@/shared/hooks/usePopulerTvShows';
 
+interface Movie {
+  id: number;
+  title?: string;
+  name?: string;
+  vote_average: number;
+  poster_path: string;
+  genre_ids: number[];
+  release_date: string;
+  media_type: string;
+}
+
 const useLoadMovies = () => {
-  const [page, setPage] = useState(1);
-  const [popularShows, setPopularShows] = useState([]);
+  const [page, setPage] = useState<number>(1);
+  const [popularShows, setPopularShows] = useState<Movie[]>([]);
   const { popularShows: newMovies, isLoading } =
     usePopularShows(page);
-  const movieContainerRef = useRef(null);
+
+  const movieContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     setPopularShows((prevMovies) => {
@@ -19,8 +31,9 @@ const useLoadMovies = () => {
   }, [newMovies]);
 
   useEffect(() => {
-    const handleScroll = (e) => {
-      const target = e.target;
+    const handleScroll = (e: Event) => {
+      // Используем общий тип Event
+      const target = e.target as HTMLElement;
       if (
         target.scrollHeight - target.scrollTop <=
           target.clientHeight + 500 &&

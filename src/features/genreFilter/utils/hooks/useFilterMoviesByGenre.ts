@@ -5,8 +5,13 @@ import { useSelector } from 'react-redux';
 // Типизация фильмов
 interface Movie {
   id: number;
+  title?: string;
+  name?: string;
+  vote_average: number;
+  poster_path: string;
   genre_ids: number[];
-  // добавьте остальные поля фильма, если они вам нужны
+  release_date: string;
+  media_type: string;
 }
 
 // Типизация состояния Redux (можно заменить на ваш конкретный тип)
