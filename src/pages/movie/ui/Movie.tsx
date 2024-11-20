@@ -9,11 +9,13 @@ import useFilterMoviesByGenre from '@/features/genreFilter/utils/hooks/useFilter
 
 interface Movie {
   id: number;
-  title: string;
+  title?: string;
+  name?: string;
+  vote_average: number;
   poster_path: string;
   genre_ids: number[];
-  vote_average: number;
   release_date: string;
+  media_type: string;
 }
 
 const Movie: React.FC = () => {
@@ -22,7 +24,6 @@ const Movie: React.FC = () => {
     popularMovies,
     isLoading: isPopularLoading,
     movieContainerRef,
-    setPage: setPopularPage,
   } = useLoadMovies();
 
   // Используем хук для фильтрации фильмов по жанрам
@@ -41,8 +42,8 @@ const Movie: React.FC = () => {
   }, [moviesByGenre]);
 
   // Обработчик прокрутки для загрузки следующей страницы
-  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
-    const target = e.target as HTMLElement;
+  const handleScroll = (e: Event) => {
+    const target = e.target as HTMLElement; // Приведение к HTMLElement
     if (
       target.scrollHeight - target.scrollTop <=
       target.clientHeight + 500
@@ -74,10 +75,7 @@ const Movie: React.FC = () => {
         {isGenreSelected ? (
           <FilteredMovies filteredMovies={moviesByGenre} />
         ) : (
-          <PopularMovies
-            popularMovies={popularMovies}
-            mediaType={'movie'}
-          />
+          <PopularMovies popularMovies={popularMovies} />
         )}
 
         {(isPopularLoading || isFilteredLoading) && (

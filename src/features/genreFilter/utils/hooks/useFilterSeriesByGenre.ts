@@ -5,8 +5,13 @@ import { useSelector } from 'react-redux';
 // Типизация сериала
 interface Serie {
   id: number;
+  title?: string;
+  name?: string;
+  vote_average: number;
+  poster_path: string;
   genre_ids: number[];
-  // Добавьте остальные поля сериала, если они вам нужны
+  release_date: string;
+  media_type: string;
 }
 
 interface RootState {

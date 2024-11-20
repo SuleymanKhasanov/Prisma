@@ -21,8 +21,6 @@ interface IFilteredMoviesProps {
 const FilteredMovies: React.FC<IFilteredMoviesProps> = ({
   filteredMovies,
 }) => {
-  console.log(filteredMovies);
-
   return (
     <>
       {filteredMovies.length > 0 ? (

@@ -4,7 +4,13 @@ import usePopularMovies from '@/shared/hooks/usePopularMovies';
 // Интерфейс для типа Movie (пример, адаптируйте под вашу структуру)
 interface Movie {
   id: number;
-  title: string;
+  title?: string;
+  name?: string;
+  vote_average: number;
+  poster_path: string;
+  genre_ids: number[];
+  release_date: string;
+  media_type: string;
 }
 
 const useLoadMovies = () => {
