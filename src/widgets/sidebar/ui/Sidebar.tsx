@@ -2,16 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import sidebarConfig from '@/shared/config/sidebarConfig';
 import styles from './styles/Sidebar.module.css';
-
-// Тип для элементов в конфигурации sidebarConfig
-interface SidebarItem {
-  id: string;
-  text: string;
-  icon: string;
-  close?: string; // Путь к изображению для закрытия (не обязательно)
-  to?: string; // URL для NavLink (не обязательно)
-  isLink: boolean; // Если true, то элемент является ссылкой, если нет, то меню
-}
+import { SidebarItem } from './modules/interfaces';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);

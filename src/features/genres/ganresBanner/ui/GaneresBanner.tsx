@@ -1,9 +1,5 @@
 import styles from './styles/Generes.module.css';
-
-interface GaneresBannerProps {
-  title: string; // Название жанра
-  id: number; // ID жанра
-}
+import { GaneresBannerProps } from './modules/interfaces';
 
 const GaneresBanner: React.FC<GaneresBannerProps> = ({
   title,

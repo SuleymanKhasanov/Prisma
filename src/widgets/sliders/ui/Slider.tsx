@@ -2,22 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import { useEffect, useRef } from 'react';
-
-interface IMovieData {
-  id: number;
-  title?: string;
-  name?: string;
-  vote_average: number;
-  poster_path: string;
-  genre_ids: number[];
-  release_date: string;
-  media_type?: string;
-}
-interface SliderProps {
-  moviesAndShows: IMovieData[]; // Используем IMovieData вместо IMovieOrShow
-  children: (element: IMovieData) => React.ReactNode; // Обновляем тип для children
-  autoplay: boolean;
-}
+import { SliderProps } from './modules/interfaces';
 
 const Slider: React.FC<SliderProps> = ({
   moviesAndShows,

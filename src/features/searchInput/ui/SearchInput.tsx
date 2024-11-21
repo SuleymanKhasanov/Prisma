@@ -17,7 +17,7 @@ const SearchInput: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(inputText); // Обновляем запрос через задержку
-    }, 500); // 500 мс задержка
+    }, 500);
 
     return () => clearTimeout(timer); // Очистка таймера при изменении ввода
   }, [inputText]);

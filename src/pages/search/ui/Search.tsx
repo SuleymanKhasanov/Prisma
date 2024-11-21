@@ -3,15 +3,7 @@ import styles from './styles/Search.module.css';
 import SearchData from './section/SearchData';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  genre_ids: number[];
-  vote_average: number;
-  release_date: string;
-}
+import { Movie } from './modules/interfaces';
 
 const Search = () => {
   // Явно указываем тип состояния searchData как Movie[]

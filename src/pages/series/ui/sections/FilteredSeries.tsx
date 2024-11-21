@@ -1,20 +1,6 @@
-import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
+import { BannerSkeleton } from '@/widgets/banner';
 import { Banner } from '@/widgets/banner';
-
-interface IFilteredMovies {
-  id: number;
-  title?: string;
-  name?: string;
-  vote_average: number;
-  poster_path: string;
-  genre_ids: number[];
-  release_date: string;
-  media_type: string;
-}
-
-interface IFilteredMoviesProps {
-  filteredMovies: IFilteredMovies[]; // Массив фильмов
-}
+import { IFilteredMoviesProps } from './modules/interfaces';
 
 const FilteredSeries: React.FC<IFilteredMoviesProps> = ({
   filteredMovies,

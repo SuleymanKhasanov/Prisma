@@ -1,22 +1,11 @@
 import { useEffect, useState } from 'react';
 import useLoadMovies from '../utils/hooks/useLoadMovies';
-import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
-import { GenreFilter } from '@/features/genreFilter';
+import { BannerSkeleton } from '@/widgets/banner';
+import { GenreFilter } from '@/features/genres/genreFilter';
 import FilteredMovies from './sections/FilteredMovies';
 import PopularMovies from './sections/PopularMovies';
 import styles from './styles/Movie.module.css';
-import useFilterMoviesByGenre from '@/features/genreFilter/utils/hooks/useFilterMoviesByGenre';
-
-interface Movie {
-  id: number;
-  title?: string;
-  name?: string;
-  vote_average: number;
-  poster_path: string;
-  genre_ids: number[];
-  release_date: string;
-  media_type: string;
-}
+import useFilterMoviesByGenre from '@/features/genres/genreFilter/utils/hooks/useFilterMoviesByGenre';
 
 const Movie: React.FC = () => {
   // Используем хук для загрузки популярных фильмов
