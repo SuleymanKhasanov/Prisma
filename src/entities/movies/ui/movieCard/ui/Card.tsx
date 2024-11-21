@@ -1,15 +1,8 @@
 import { moviesGeners } from '@/shared/assets/genresId';
 import { seriesGenere } from '@/shared/assets/genresId';
 import styles from './styles/Card.module.css';
-import { Follback } from '@/entities/follback';
-
-interface CardProps {
-  mediaType: string; // Уточняем, что это может быть только 'movie' или 'series'
-  title: string | undefined;
-  poster: string;
-  genere: number[]; // Массив чисел, представляющих ID жанров
-  date?: string; // Дата может быть строкой или отсутствовать (undefined)
-}
+import { Follback } from './movieCardFollback';
+import { CardProps } from './modules/interfaces';
 
 const Card: React.FC<CardProps> = ({
   mediaType,

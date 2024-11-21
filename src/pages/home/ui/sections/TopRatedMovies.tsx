@@ -1,4 +1,4 @@
-import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
+import { BannerSkeleton } from '@/widgets/banner';
 import useTopRatedMovies from '@/shared/hooks/useTopRatedMovies';
 import { Banner } from '@/widgets/banner';
 import { Slider } from '@/widgets/sliders';

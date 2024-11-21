@@ -1,22 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useLoadMovies from '../utils/hooks/useLoadMovies';
-import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
-import { GenreFilter } from '@/features/genreFilter';
+import { BannerSkeleton } from '@/widgets/banner';
+import { GenreFilter } from '@/features/genres/genreFilter';
 import styles from './styles/Series.module.css';
-import useFilterSeriesByGenre from '@/features/genreFilter/utils/hooks/useFilterSeriesByGenre';
+import useFilterSeriesByGenre from '@/features/genres/genreFilter/utils/hooks/useFilterSeriesByGenre';
 import FilteredSeries from './sections/FilteredSeries';
 import PopularSeries from './sections/PopularSeries';
-
-interface Movie {
-  id: number;
-  title?: string;
-  name?: string;
-  vote_average: number;
-  poster_path: string;
-  genre_ids: number[];
-  release_date: string;
-  media_type: string;
-}
 
 const Series: React.FC = () => {
   const {

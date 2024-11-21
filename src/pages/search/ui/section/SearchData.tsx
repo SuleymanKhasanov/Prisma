@@ -1,4 +1,4 @@
-import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
+import { BannerSkeleton } from '@/widgets/banner';
 import { Banner } from '@/widgets/banner';
 import styles from './styles/SearchData.module.css';
 

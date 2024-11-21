@@ -1,7 +1,7 @@
 import useWeekTrending from '@/shared/hooks/useWeekTrends';
 import { Slider } from '@/widgets/sliders';
 import { Banner } from '@/widgets/banner';
-import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
+import { BannerSkeleton } from '@/widgets/banner';
 import styles from './styles/WeekTrends.module.css';
 import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
 import { IMovieData } from './module/interfaces';

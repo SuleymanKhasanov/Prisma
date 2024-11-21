@@ -3,20 +3,7 @@ import { hideStories } from '@/features/stories/storiesBanner/utils/slice'; // �
 import styles from './styles/StoriesModalWindow.module.css';
 import { useEffect, useState } from 'react';
 import close from '@/shared/icons/close.svg';
-
-// Типизация состояния Redux
-interface Story {
-  movieKey: string;
-  // другие поля story, если они есть
-}
-
-interface RootState {
-  stories: StoriesState;
-}
-
-interface StoriesState {
-  currentStory: Story | null;
-}
+import { RootState } from './modules/interfaces';
 
 const StoriesModalWindow = () => {
   const dispatch = useDispatch();

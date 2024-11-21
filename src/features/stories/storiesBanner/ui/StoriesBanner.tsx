@@ -2,13 +2,7 @@ import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { showStories } from '../utils/slice';
 import styles from './styles/StoriesBanner.module.css';
-
-interface StoriesBannerProps {
-  image: string;
-  title: string;
-  id: number;
-  movieKey: string | undefined;
-}
+import { StoriesBannerProps } from './modules/interfaces';
 
 const StoriesBanner: React.FC<StoriesBannerProps> = ({
   image,

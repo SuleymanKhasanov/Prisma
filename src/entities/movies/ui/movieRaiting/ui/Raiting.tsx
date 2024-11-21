@@ -1,8 +1,5 @@
 import styles from './styles/Raiting.module.css';
-
-interface RaitingProps {
-  rating?: number; // rating может быть числом или undefined
-}
+import { RaitingProps } from './modules/interfaces';
 
 const Raiting: React.FC<RaitingProps> = ({ rating }) => {
   return (

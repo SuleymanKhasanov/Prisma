@@ -1,9 +1,5 @@
 import styles from './styles/ActionButton.module.css';
-
-interface ActionButtonProps {
-  onClick: () => void; // Тип для функции обработчика без аргументов и возвращаемого значения
-  id: number; // Добавляем пропс id
-}
+import { ActionButtonProps } from './modules/interfaces';
 
 const ActionButton: React.FC<ActionButtonProps> = ({
   onClick,

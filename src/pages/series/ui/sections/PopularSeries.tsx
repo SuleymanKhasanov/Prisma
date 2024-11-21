@@ -1,21 +1,6 @@
-import BannerSkeleton from '@/entities/bannerSkeleton/ui/BannerSkeleton';
+import { BannerSkeleton } from '@/widgets/banner';
 import { Banner } from '@/widgets/banner';
-
-interface IPopularMovie {
-  id: number;
-  title?: string;
-  name?: string;
-  vote_average: number;
-  poster_path: string;
-  genre_ids: number[];
-  release_date: string;
-  media_type: string;
-}
-
-// Типизация пропсов компонента
-interface IPopularMoviesProps {
-  popularMovies: IPopularMovie[]; // Массив популярных фильмов
-}
+import { IPopularMoviesProps } from './modules/interfaces';
 
 const PopularSeries: React.FC<IPopularMoviesProps> = ({
   popularMovies,

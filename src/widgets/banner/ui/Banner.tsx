@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Card } from '@/entities/card';
-import { Raiting } from '@/entities/raiting';
+import { Card } from '@/entities/movies/ui/movieCard';
+import { Raiting } from '@/entities/movies/ui/movieRaiting';
 import { ActionButton, ActionItem } from '@/features/action';
 import styles from './styles/Banner.module.css';
 import { useDispatch, useSelector } from 'react-redux';
