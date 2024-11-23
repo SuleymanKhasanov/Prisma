@@ -70,7 +70,11 @@ const Banner: React.FC<BannerType> = ({
         />
 
         {modalActionItem[id] ? (
-          <ActionItem id={id} media_type={mediaType} />
+          <ActionItem
+            id={id}
+            media_type={mediaType}
+            sectionName={sectionName}
+          />
         ) : null}
       </div>
     </div>

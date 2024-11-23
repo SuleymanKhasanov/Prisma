@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 const WatchLater = () => {
   const [storedData, setStoredData] = useState<any[]>([]);
+
   const data = localStorage.getItem('watchLaterMovies');
 
   useEffect(() => {
@@ -11,6 +12,8 @@ const WatchLater = () => {
       setStoredData(JSON.parse(data));
     }
   }, [data]);
+
+  console.log(storedData);
   return (
     <>
       <div className={styles.sectionTitleWrapper}>
@@ -28,7 +31,7 @@ const WatchLater = () => {
               poster={element.poster_path}
               genere={element.genre_ids}
               id={element.id}
-              sectionName=""
+              sectionName="watchLater"
               date={element.release_date}
             />
           ))
