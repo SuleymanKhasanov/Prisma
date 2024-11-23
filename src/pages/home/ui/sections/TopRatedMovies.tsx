@@ -2,9 +2,9 @@ import { BannerSkeleton } from '@/widgets/banner';
 import useTopRatedMovies from '@/shared/hooks/useTopRatedMovies';
 import { Banner } from '@/widgets/banner';
 import { Slider } from '@/widgets/sliders';
-import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
+import useSectionAutoplay from '@/widgets/sliders/utils/hooks/useSectionAutoplay';
 import styles from './styles/TopRatedMovies.module.css';
-import { IMovieData } from './module/interfaces';
+import { IMovieData } from '../../model/interfaces';
 
 const TopRatedMovies = () => {
   const topRatedMovies = useTopRatedMovies();

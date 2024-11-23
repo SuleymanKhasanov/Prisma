@@ -3,7 +3,7 @@ import { hideStories } from '@/features/stories/storiesBanner/utils/slice'; // Ð
 import styles from './styles/StoriesModalWindow.module.css';
 import { useEffect, useState } from 'react';
 import close from '@/shared/icons/close.svg';
-import { RootState } from './modules/interfaces';
+import { RootState } from '../model/interfaces';
 
 const StoriesModalWindow = () => {
   const dispatch = useDispatch();

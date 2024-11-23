@@ -1,7 +1,7 @@
 import React from 'react';
 import { BannerSkeleton } from '@/widgets/banner';
 import { Banner } from '@/widgets/banner';
-import { IPopularMoviesProps } from './modules/interfaces';
+import { IPopularMoviesProps } from '../../model/interfaces';
 
 const PopularMovies: React.FC<IPopularMoviesProps> = ({
   popularMovies,

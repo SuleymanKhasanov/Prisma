@@ -1,6 +1,6 @@
 import { BannerSkeleton } from '@/widgets/banner';
 import { Banner } from '@/widgets/banner';
-import { IPopularMoviesProps } from './modules/interfaces';
+import { IPopularMoviesProps } from '../../model/interfaces';
 
 const PopularSeries: React.FC<IPopularMoviesProps> = ({
   popularMovies,

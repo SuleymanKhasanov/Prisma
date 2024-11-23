@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useLoadMovies from './hooks/useLoadMovies';
+import useLoadMovies from '../utils/hooks/useLoadMovies';
 import { BannerSkeleton } from '@/widgets/banner';
 import { GenreFilter } from '@/features/genres/genreFilter';
 import FilteredMovies from './sections/FilteredMovies';

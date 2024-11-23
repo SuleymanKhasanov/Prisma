@@ -2,9 +2,9 @@ import { BannerSkeleton } from '@/widgets/banner';
 import usePopularShows from '@/shared/hooks/usePopulerTvShows';
 import { Banner } from '@/widgets/banner';
 import { Slider } from '@/widgets/sliders';
-import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
+import useSectionAutoplay from '@/widgets/sliders/utils/hooks/useSectionAutoplay';
 import styles from './styles/PopularTvShows.module.css';
-import { IMovieData } from './module/interfaces';
+import { IMovieData } from '../../model/interfaces';
 
 const PopulerTvShows = () => {
   const popularShows = usePopularShows(1);

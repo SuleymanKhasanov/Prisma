@@ -5,3 +5,7 @@ export interface CardProps {
   genere: number[];
   date?: string;
 }
+
+export interface RaitingProps {
+  rating?: number;
+}

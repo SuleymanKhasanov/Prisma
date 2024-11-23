@@ -62,13 +62,6 @@ const sidebarConfig: ISidebarConfig[] = [
     isLink: true,
   },
   {
-    id: 'anime',
-    to: '/anime',
-    icon: anime,
-    text: 'Аниме',
-    isLink: true,
-  },
-  {
     id: 'watch-later',
     to: '/watch-later',
     icon: watchLater,

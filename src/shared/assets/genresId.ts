@@ -1,4 +1,4 @@
-import GenreCollection from './modules/GenereCollectionInteface';
+import GenreCollection from './model/GenereCollectionInteface';
 
 export const moviesGeners: GenreCollection = {
   genres: [
