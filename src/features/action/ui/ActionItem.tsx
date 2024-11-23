@@ -1,19 +1,23 @@
 import styles from './styles/ActionItem.module.css';
 import watchLater from '@/shared/icons/history.svg';
 import folder from '@/shared/icons/folder.svg';
+import bin from '@/shared/icons/bin.svg';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToWatchLater } from '../utils/slice';
 import saveInWatchLaterMovies from '@/shared/utils/watchLaterStorage';
+import { deleteMovieFromWatchLater } from '../utils/sliceDeleteMovie';
 
 interface ActionItemProps {
   id: number;
   media_type: string;
+  sectionName?: string;
 }
 
 const ActionItem: React.FC<ActionItemProps> = ({
   id,
   media_type,
+  sectionName,
 }) => {
   const [watchLaterId, setWatchLaterId] = useState(0);
   const dispatch = useDispatch();
@@ -26,19 +30,44 @@ const ActionItem: React.FC<ActionItemProps> = ({
 
   saveInWatchLaterMovies();
 
+  const [deleteMovie, setDeleteMovie] = useState(0);
+
+  useEffect(() => {
+    if (deleteMovie !== 0) {
+      dispatch(deleteMovieFromWatchLater(id));
+    }
+  }, [deleteMovie]);
+
+  saveInWatchLaterMovies();
+
   return (
     <ul className={styles.actionList}>
-      <li
-        className={styles.actionItem}
-        onClick={() => setWatchLaterId(id)}
-      >
-        <img
-          src={watchLater}
-          alt="watch later"
-          className={styles.sidebarIcon}
-        />
-        <span>Посмотреть позже</span>
-      </li>
+      {sectionName === 'watchLater' ? (
+        <li
+          className={styles.actionItem}
+          onClick={() => setDeleteMovie(id)}
+        >
+          <img
+            src={bin}
+            alt="watch later"
+            className={styles.sidebarIcon}
+          />
+          <span>Удалить</span>
+        </li>
+      ) : (
+        <li
+          className={styles.actionItem}
+          onClick={() => setWatchLaterId(id)}
+        >
+          <img
+            src={watchLater}
+            alt="watch later"
+            className={styles.sidebarIcon}
+          />
+          <span>Посмотреть позже</span>
+        </li>
+      )}
+
       <li className={styles.actionItem}>
         <img
           src={folder}
