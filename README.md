@@ -30,9 +30,9 @@
 
 1. Клонируйте репозиторий:
 
-   ```bash
-   git clone https://github.com/SuleymanKhasanov/Prisma.git
-   ```
+```bash
+git clone https://github.com/SuleymanKhasanov/Prisma.git
+```
 
 2. Установите зависимости:
 

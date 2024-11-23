@@ -2,7 +2,7 @@ import { moviesGeners } from '@/shared/assets/genresId';
 import { seriesGenere } from '@/shared/assets/genresId';
 import styles from './styles/Card.module.css';
 import { Follback } from './movieCardFollback';
-import { CardProps } from './modules/interfaces';
+import { CardProps } from '../model/interfaces';
 
 const Card: React.FC<CardProps> = ({
   mediaType,

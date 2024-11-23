@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Card } from '@/entities/movies/ui/movieCard';
-import { Raiting } from '@/entities/movies/ui/movieRaiting';
+import { Card } from '@/entities/movies/movieCard';
+import { Raiting } from '@/entities/movies/movieRaiting';
 import { ActionButton, ActionItem } from '@/features/action';
 import styles from './styles/Banner.module.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,24 +8,8 @@ import {
   sliderAutoplay,
   sliderStop,
 } from '@/widgets/sliders/utils/slice';
-
-// Тип для пропсов Banner
-interface BannerType {
-  mediaType: string;
-  title?: string;
-  rating: number;
-  poster: string;
-  genere: number[];
-  name?: string;
-  id: number;
-  sectionName: string;
-  date: string;
-}
-
-// Тип для состояния modalActionItem
-interface ModalActionItem {
-  [key: number]: boolean;
-}
+import { BannerType } from '../model/interfaces';
+import { ModalActionItem } from '../model/interfaces';
 
 const Banner: React.FC<BannerType> = ({
   mediaType,
@@ -85,7 +69,9 @@ const Banner: React.FC<BannerType> = ({
           id={id}
         />
 
-        {modalActionItem[id] ? <ActionItem /> : null}
+        {modalActionItem[id] ? (
+          <ActionItem id={id} media_type={mediaType} />
+        ) : null}
       </div>
     </div>
   );

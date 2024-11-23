@@ -1,5 +1,5 @@
 import styles from './styles/BannerSkeleton.module.css';
-import { BannerSkeletonProps } from './modules/interfaces';
+import { BannerSkeletonProps } from '../../model/interfaces';
 
 const BannerSkeleton: React.FC<BannerSkeletonProps> = ({
   count = 1,

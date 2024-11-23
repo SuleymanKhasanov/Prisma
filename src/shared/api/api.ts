@@ -135,3 +135,24 @@ export const getSearchMovieByTitle = async (query: string) => {
     throw error;
   }
 };
+
+export const getMovieById = async (
+  media_type: string,
+  movieId: number,
+) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}${media_type}/${movieId}`,
+      {
+        params: {
+          api_key: API_KEY,
+          language: 'ru-RU',
+        },
+      },
+    );
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

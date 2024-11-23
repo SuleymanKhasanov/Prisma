@@ -1,7 +1,7 @@
 import React from 'react';
 import { BannerSkeleton } from '@/widgets/banner';
 import { Banner } from '@/widgets/banner';
-import { IFilteredMoviesProps } from './modules/interfaces';
+import { IFilteredMoviesProps } from '../../model/interfaces';
 
 const FilteredMovies: React.FC<IFilteredMoviesProps> = ({
   filteredMovies,

@@ -2,9 +2,9 @@ import { Banner } from '@/widgets/banner';
 import { Slider } from '@/widgets/sliders';
 import { BannerSkeleton } from '@/widgets/banner';
 import usePopularMovies from '@/shared/hooks/usePopularMovies';
-import useSectionAutoplay from '@/widgets/sliders/hooks/useSectionAutoplay';
+import useSectionAutoplay from '@/widgets/sliders/utils/hooks/useSectionAutoplay';
 import styles from './styles/PopularMovies.module.css';
-import { IMovieData } from './module/interfaces';
+import { IMovieData } from '../../model/interfaces';
 
 const PopularMovies = () => {
   const popularMovies = usePopularMovies(1);

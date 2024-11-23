@@ -1,10 +1,7 @@
 import styles from './styles/ActionButton.module.css';
-import { ActionButtonProps } from './modules/interfaces';
+import { ActionButtonProps } from '../model/interfaces';
 
-const ActionButton: React.FC<ActionButtonProps> = ({
-  onClick,
-  id,
-}) => {
+const ActionButton: React.FC<ActionButtonProps> = ({ onClick }) => {
   return (
     <div className={styles.actionButton} onClick={onClick}>
       <span className={styles.dott}></span>

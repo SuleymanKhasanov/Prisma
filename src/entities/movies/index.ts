@@ -1,3 +1,4 @@
-import { Card } from './ui/movieCard';
+import { Card } from './movieCard';
+import { Raiting } from './movieRaiting';
 
-export { Card };
+export { Card, Raiting };

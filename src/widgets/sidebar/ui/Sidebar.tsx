@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import sidebarConfig from '@/shared/config/sidebarConfig';
 import styles from './styles/Sidebar.module.css';
-import { SidebarItem } from './modules/interfaces';
+import { SidebarItem } from '../model/interfaces';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);

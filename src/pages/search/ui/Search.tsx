@@ -3,7 +3,7 @@ import styles from './styles/Search.module.css';
 import SearchData from './section/SearchData';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { Movie } from './modules/interfaces';
+import { Movie } from '../model/interfaces';
 
 const Search = () => {
   // Явно указываем тип состояния searchData как Movie[]
@@ -18,8 +18,6 @@ const Search = () => {
       setSearchData(findMovies);
     }
   }, [findMovies]);
-
-  console.log(findMovies);
 
   return (
     <div>

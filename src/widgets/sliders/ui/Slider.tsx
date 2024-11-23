@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
 import { useEffect, useRef } from 'react';
-import { SliderProps } from './modules/interfaces';
+import { SliderProps } from '../model/interfaces';
 
 const Slider: React.FC<SliderProps> = ({
   moviesAndShows,

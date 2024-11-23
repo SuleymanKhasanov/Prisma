@@ -1,5 +1,5 @@
 import styles from './styles/Generes.module.css';
-import { GaneresBannerProps } from './modules/interfaces';
+import { GaneresBannerProps } from '../model/interfaces';
 
 const GaneresBanner: React.FC<GaneresBannerProps> = ({
   title,
