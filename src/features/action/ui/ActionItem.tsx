@@ -4,7 +4,7 @@ import folder from '@/shared/icons/folder.svg';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToWatchLater } from '../utils/slice';
-import saveInWatchLaterMovies from '@/shared/utils/watchLaterstorage';
+import saveInWatchLaterMovies from '@/shared/utils/watchLaterStorage';
 
 interface ActionItemProps {
   id: number;

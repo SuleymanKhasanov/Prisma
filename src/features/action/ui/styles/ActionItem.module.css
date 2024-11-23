@@ -24,3 +24,8 @@
 .actionItem:hover {
   background-color: rgba(79, 79, 79, 0.5);
 }
+
+.actionItem:active {
+  scale: 0.9;
+  background-color: rgba(14, 183, 47, 0.5);
+}

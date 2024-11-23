@@ -25,10 +25,24 @@ const saveInWatchLaterMovies = () => {
     }),
   );
 
-  localStorage.setItem(
-    'watchLaterMovies',
-    JSON.stringify(watchLater),
-  );
+  useEffect(() => {
+    // Фильтруем, чтобы не добавлять дублирующиеся фильмы
+    const uniqueMovies = watchLater.filter(
+      (movie) =>
+        !storedData.some(
+          (storedMovie) => storedMovie.id === movie.id,
+        ),
+    );
+
+    if (uniqueMovies.length > 0) {
+      const updatedMovies = [...storedData, ...uniqueMovies];
+      setStoredData(updatedMovies);
+      localStorage.setItem(
+        'watchLaterMovies',
+        JSON.stringify(updatedMovies),
+      );
+    }
+  }, [watchLater, storedData]);
 };
 
 export default saveInWatchLaterMovies;
