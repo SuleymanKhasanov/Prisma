@@ -17,6 +17,7 @@ const SingleMoviePage = () => {
         title={latestMovie?.name || latestMovie?.title}
         description={latestMovie?.tagline}
         poster={latestMovie?.backdrop_path}
+        linkToMovie={latestMovie?.homepage}
       />
     </div>
   );

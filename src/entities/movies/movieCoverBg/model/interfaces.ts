@@ -3,4 +3,5 @@ export interface MovieCoverProps {
   title: string;
   description: string;
   poster: string;
+  linkToMovie: string;
 }
