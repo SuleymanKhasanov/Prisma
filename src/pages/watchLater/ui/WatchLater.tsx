@@ -1,19 +1,45 @@
 import { Banner } from '@/widgets/banner';
 import styles from './styles/WatchLater.module.css';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const WatchLater = () => {
   const [storedData, setStoredData] = useState<any[]>([]);
 
-  const data = localStorage.getItem('watchLaterMovies');
+  // Получаем ID фильмов для удаления из Redux
+  const deleteMovieIds = useSelector(
+    (state: any) => state.deleteMovie, // Ожидается массив ID для удаления
+  );
 
+  // Загружаем данные из localStorage только один раз при монтировании
   useEffect(() => {
+    const data = localStorage.getItem('watchLaterMovies');
     if (data) {
       setStoredData(JSON.parse(data));
     }
-  }, [data]);
+  }, []);
 
-  console.log(storedData);
+  // Обновляем данные, когда изменяются deleteMovieIds
+  useEffect(() => {
+    if (deleteMovieIds.length > 0) {
+      setStoredData((prevStoredData) => {
+        const updatedData = prevStoredData.filter(
+          (movie) => !deleteMovieIds.includes(movie.id),
+        );
+
+        // Обновляем localStorage только если данные изменились
+        if (updatedData.length !== prevStoredData.length) {
+          localStorage.setItem(
+            'watchLaterMovies',
+            JSON.stringify(updatedData),
+          );
+        }
+
+        return updatedData;
+      });
+    }
+  }, [deleteMovieIds]);
+
   return (
     <>
       <div className={styles.sectionTitleWrapper}>
@@ -36,9 +62,7 @@ const WatchLater = () => {
             />
           ))
         ) : (
-          <div className={styles.title}>
-            Нет сохраненых фильмов, для просмотра позже
-          </div>
+          <div className={styles.title}>Нет сохранённых фильмов</div>
         )}
       </section>
     </>
