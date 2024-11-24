@@ -4,6 +4,7 @@ export interface CardProps {
   poster: string;
   genere: number[];
   date?: string;
+  id: number;
 }
 
 export interface RaitingProps {

@@ -11,6 +11,7 @@ import { Cartoons } from '@/pages/cartoons';
 import { WatchLater } from '@/pages/watchLater';
 import { Collections } from '@/pages/collections';
 import NotFound from '@/pages/notFound/ui/NotFound';
+import { SingleMoviePage } from '@/pages/singleMoviePage';
 
 const BaseLayout = () => {
   return (
@@ -27,6 +28,7 @@ const BaseLayout = () => {
             <Route path="/watch-later" element={<WatchLater />} />
             <Route path="/collections" element={<Collections />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/:movieId" element={<SingleMoviePage />} />
           </Routes>
         </main>
       </Router>
