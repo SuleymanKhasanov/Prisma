@@ -60,6 +60,7 @@ const Banner: React.FC<BannerType> = ({
           mediaType={mediaType}
           genere={genere}
           date={releaseDate}
+          id={id}
         />
       </div>
       <div className={styles.bannerAction}>
