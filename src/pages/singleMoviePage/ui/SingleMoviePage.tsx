@@ -1,5 +1,7 @@
-import { MovieCover } from '@/entities/movies/movieCoverBg';
+import { MovieCover } from './sections/movieCoverBg';
 import useCurrentMoviesData from '@/shared/hooks/useCurrentMoviesData';
+import MovieDescription from './sections/movieDescription/MovieDesctiption';
+import styles from './SingleMoviePage.module.css';
 
 const SingleMoviePage = () => {
   const movieData = useCurrentMoviesData();
@@ -11,13 +13,17 @@ const SingleMoviePage = () => {
 
   console.log(latestMovie);
   return (
-    <div>
+    <div className={styles.movieContent}>
       <MovieCover
-        id={latestMovie?.id}
+        title={latestMovie?.name || latestMovie?.title}
+        poster={latestMovie?.backdrop_path}
+      />
+      <MovieDescription
         title={latestMovie?.name || latestMovie?.title}
         description={latestMovie?.tagline}
-        poster={latestMovie?.backdrop_path}
         linkToMovie={latestMovie?.homepage}
+        overview={latestMovie?.overview}
+        production_companies={latestMovie?.production_companies}
       />
     </div>
   );
