@@ -15,6 +15,18 @@
   object-position: center;
 }
 
+.bannerAction {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 25px;
+  width: 95%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
 @media screen and (min-width: 768px) {
   .movieCover {
     width: 100%;

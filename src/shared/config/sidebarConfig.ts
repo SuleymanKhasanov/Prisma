@@ -68,13 +68,6 @@ const sidebarConfig: ISidebarConfig[] = [
     text: 'Посмотреть позже',
     isLink: true,
   },
-  {
-    id: 'collections',
-    to: '/collections',
-    icon: folder,
-    text: 'Мои коллекции',
-    isLink: true,
-  },
 ];
 
 export default sidebarConfig;

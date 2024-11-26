@@ -17,6 +17,9 @@ const SingleMoviePage = () => {
       <MovieCover
         title={latestMovie?.name || latestMovie?.title}
         poster={latestMovie?.backdrop_path}
+        raiting={latestMovie?.vote_average}
+        id={latestMovie?.id}
+        releaseDate={latestMovie?.release_date}
       />
       <MovieDescription
         title={latestMovie?.name || latestMovie?.title}
