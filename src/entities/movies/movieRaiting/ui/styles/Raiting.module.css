@@ -5,3 +5,13 @@
   font-weight: bold;
   border-radius: 50%;
 }
+
+.raitingBig {
+  padding: 20px 18px;
+  color: #35e16e;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}

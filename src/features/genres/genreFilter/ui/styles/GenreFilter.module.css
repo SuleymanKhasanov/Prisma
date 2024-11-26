@@ -18,6 +18,7 @@
   overflow-x: auto;
   align-items: center;
   padding: 15px;
+  padding-right: 70px;
 }
 
 .genresList::-webkit-scrollbar {
