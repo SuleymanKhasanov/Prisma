@@ -84,6 +84,48 @@
   object-fit: contain;
 }
 
+.cast {
+  padding-bottom: 20px;
+}
+
+.castList {
+  display: flex;
+  height: 200px;
+  gap: 20px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 20px;
+  padding-right: 100px;
+}
+
+.castList::-webkit-scrollbar {
+  display: none;
+}
+
+.castWrapper {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #717171, #5b5b5b);
+  padding: 3px;
+  border-radius: 40px;
+  align-items: center;
+  text-align: center;
+}
+
+.castImage {
+  border-radius: 40px;
+  position: 0 0;
+  width: 95px;
+  height: 95px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.castName {
+  margin-top: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .movieName {
     font-size: 40px;
