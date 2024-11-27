@@ -1,4 +1,4 @@
-import styles from './styles/ActionButton.module.css';
+import styles from './ActionButton.module.css';
 import { ActionButtonProps } from '../model/interfaces';
 
 const ActionButton: React.FC<ActionButtonProps> = ({ onClick }) => {

@@ -1,5 +1,5 @@
 import { Banner } from '@/widgets/banner';
-import styles from './styles/WatchLater.module.css';
+import styles from './WatchLater.module.css';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 

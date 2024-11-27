@@ -1,4 +1,4 @@
-import styles from './styles/Follback.module.css';
+import styles from './Follback.module.css';
 import follbackIcon from '@/shared/icons/follback.svg';
 
 const Follback = () => {

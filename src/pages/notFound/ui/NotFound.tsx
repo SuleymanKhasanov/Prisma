@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import styles from './styles/NotFound.module.css';
+import { useRef, useEffect } from 'react';
+import styles from './NotFound.module.css';
 
 const NotFound = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null); // Типизация canvasRef

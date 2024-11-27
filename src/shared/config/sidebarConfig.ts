@@ -5,8 +5,6 @@ import movies from '@/shared/icons/movies.svg';
 import series from '@/shared/icons/series.svg';
 import watchLater from '@/shared/icons/history.svg';
 import cartoon from '@/shared/icons/cartoon.svg';
-import anime from '@/shared/icons/anime.svg';
-import folder from '@/shared/icons/folder.svg';
 import close from '@/shared/icons/close.svg';
 
 interface ISidebarConfig {

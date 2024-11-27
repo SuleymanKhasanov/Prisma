@@ -1,4 +1,4 @@
-import styles from './styles/Generes.module.css';
+import styles from './Generes.module.css';
 import { GaneresBannerProps } from '../model/interfaces';
 
 const GaneresBanner: React.FC<GaneresBannerProps> = ({

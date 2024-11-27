@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useLoadMovies from '../utils/hooks/useLoadMovies';
 import { BannerSkeleton } from '@/widgets/banner';
 import { GenreFilter } from '@/features/genres/genreFilter';
-import styles from './styles/Series.module.css';
+import styles from './Series.module.css';
 import useFilterSeriesByGenre from '@/features/genres/genreFilter/utils/hooks/useFilterSeriesByGenre';
 import FilteredSeries from './sections/FilteredSeries';
 import PopularSeries from './sections/PopularSeries';

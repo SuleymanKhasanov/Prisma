@@ -18,12 +18,7 @@ const MovieDescription: React.FC<MovieDescriptionsProps> = ({
         </div>
         {linkToMovie && (
           <div className={styles.mowieLinkWrapper}>
-            <a
-              className={styles.movieLink}
-              href={linkToMovie}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className={styles.movieLink} href={linkToMovie}>
               Смотреть
             </a>
           </div>
