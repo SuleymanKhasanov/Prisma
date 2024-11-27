@@ -1,12 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: Array<{}> = [];
+type Movie = {
+  id: number;
+  media_type: string;
+};
+
+const initialState: Movie[] = [];
 
 const currentMovie = createSlice({
   name: 'currentMovie',
   initialState,
   reducers: {
-    watchCurrentMovie(state, action) {
+    watchCurrentMovie(state, action: PayloadAction<Movie>) {
       state.push(action.payload);
     },
   },

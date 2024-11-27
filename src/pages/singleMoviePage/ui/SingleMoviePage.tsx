@@ -2,6 +2,9 @@ import { MovieCover } from './sections/movieCoverBg';
 import useCurrentMoviesData from '@/shared/hooks/useCurrentMoviesData';
 import MovieDescription from './sections/movieDescription/MovieDesctiption';
 import styles from './SingleMoviePage.module.css';
+import { useSelector } from 'react-redux';
+import { useGetCastsQuery } from '@/shared/api/apiSlice';
+import { RootState } from '@/app/store/store';
 
 const SingleMoviePage = () => {
   const movieData = useCurrentMoviesData();
@@ -11,7 +14,15 @@ const SingleMoviePage = () => {
       ? currentMovieData[currentMovieData.length - 1]
       : null;
 
-  console.log(latestMovie);
+  const mediatypeAndId = useSelector(
+    (state: RootState) => state.currentMovie,
+  );
+
+  const { data } = useGetCastsQuery({
+    media_type: mediatypeAndId[mediatypeAndId.length - 1]?.media_type,
+    id: mediatypeAndId[mediatypeAndId.length - 1]?.id,
+  });
+
   return (
     <div className={styles.movieContent}>
       <MovieCover
@@ -27,6 +38,7 @@ const SingleMoviePage = () => {
         linkToMovie={latestMovie?.homepage}
         overview={latestMovie?.overview}
         production_companies={latestMovie?.production_companies}
+        cast={data?.cast}
       />
     </div>
   );

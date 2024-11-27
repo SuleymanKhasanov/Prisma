@@ -1,6 +1,5 @@
 import styles from './styles/ActionItem.module.css';
 import watchLater from '@/shared/icons/history.svg';
-import folder from '@/shared/icons/folder.svg';
 import bin from '@/shared/icons/bin.svg';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -67,15 +66,6 @@ const ActionItem: React.FC<ActionItemProps> = ({
           <span>Посмотреть позже</span>
         </li>
       )}
-
-      <li className={styles.actionItem}>
-        <img
-          src={folder}
-          alt="folder"
-          className={styles.sidebarIcon}
-        />
-        <span>Создать коллекцию</span>
-      </li>
     </ul>
   );
 };
