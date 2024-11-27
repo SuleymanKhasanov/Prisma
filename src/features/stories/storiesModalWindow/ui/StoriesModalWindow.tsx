@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { hideStories } from '@/features/stories/storiesBanner/utils/slice'; // Импорт экшена для сброса состояния
-import styles from './styles/StoriesModalWindow.module.css';
+import styles from './StoriesModalWindow.module.css';
 import { useEffect, useState } from 'react';
 import close from '@/shared/icons/close.svg';
 import { RootState } from '../model/interfaces';

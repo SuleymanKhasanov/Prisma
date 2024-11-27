@@ -1,5 +1,5 @@
 import { SearchInput } from '@/features/searchInput';
-import styles from './styles/Search.module.css';
+import styles from './Search.module.css';
 import SearchData from './section/SearchData';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';

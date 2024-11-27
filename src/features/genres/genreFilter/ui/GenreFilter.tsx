@@ -1,7 +1,7 @@
 import { moviesGeners } from '@/shared/assets/genresId';
 import { seriesGenere } from '@/shared/assets/genresId';
 import close from '@/shared/icons/close.svg';
-import styles from './styles/GenreFilter.module.css';
+import styles from './GenreFilter.module.css';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filter } from '../utils/slice/slice';

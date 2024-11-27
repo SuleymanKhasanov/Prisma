@@ -1,6 +1,6 @@
 import { moviesGeners } from '@/shared/assets/genresId';
 import { seriesGenere } from '@/shared/assets/genresId';
-import styles from './styles/Card.module.css';
+import styles from './Card.module.css';
 import { Follback } from './movieCardFollback';
 import { CardProps } from '../model/interfaces';
 import { Link } from 'react-router-dom';

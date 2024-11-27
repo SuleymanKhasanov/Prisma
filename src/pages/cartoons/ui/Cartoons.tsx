@@ -4,7 +4,7 @@ import { BannerSkeleton } from '@/widgets/banner';
 import { GenreFilter } from '@/features/genres/genreFilter';
 import FilteredMovies from './sections/FilteredMovies';
 import PopularMovies from './sections/PopularMovies';
-import styles from './styles/Movie.module.css';
+import styles from './Cartoons.module.css';
 import useFilterCartoonsByGenre from '@/features/genres/genreFilter/utils/hooks/useFilterCartoonsByGenre';
 
 const Cartoons: React.FC = () => {

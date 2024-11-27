@@ -3,7 +3,7 @@ import WeekTrends from './sections/WeekTrends';
 import PopularMovies from './sections/PopularMovies';
 import TopRatedMovies from './sections/TopRatedMovies';
 import PopulerTvShows from './sections/PopulerTvShows';
-import styles from './styles/Home.module.css';
+import styles from './Home.module.css';
 
 const Home = () => {
   return (

@@ -1,5 +1,5 @@
 import React, { FormEvent, useState, useEffect } from 'react';
-import styles from './styles/SearchInput.module.css';
+import styles from './SearchInput.module.css';
 import searchIcon from '@/shared/icons/search.svg';
 import useSearchMovieAndShowsByTitle from '@/shared/hooks/useSearchMoviesAndShowsByTitle';
 import { searchData } from '../utils/slice'; // Импортируем правильное действие

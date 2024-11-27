@@ -1,4 +1,4 @@
-import styles from './styles/Raiting.module.css';
+import styles from './Raiting.module.css';
 import { RaitingProps } from '../../movieCard/model/interfaces';
 
 const Raiting: React.FC<RaitingProps> = ({ rating }) => {

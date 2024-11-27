@@ -1,4 +1,4 @@
-import styles from './styles/ActionItem.module.css';
+import styles from './ActionItem.module.css';
 import watchLater from '@/shared/icons/history.svg';
 import bin from '@/shared/icons/bin.svg';
 import { useEffect, useState } from 'react';
